@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ello",
+  "name": "The Trello clone: ello",
   "icons": [
     {
       "src": "favicon-64.png",
