@@ -18,7 +18,7 @@ export const DashboardView = function() {
 
     // An array of board uid's from the user object. 
     // Empty if user hasn't been added to context yet.
-    const [boards, setBoards] = useState(user.boards)
+    const [boards, setBoards] = useState([])
     
     const initBoards = async function(boards) {
         if (boards.length === 0) {
@@ -36,8 +36,8 @@ export const DashboardView = function() {
         initBoards(userId);
     },[])
 
-    const ownedBoards = boards.filter((board) => board.owner === userId)
-    const sharedBoards = boards.filter((board) => board.owner !== userId)
+    const ownedBoards = boards.filter((board) => board.ownerId === userId)
+    const sharedBoards = boards.filter((board) => board.ownerId !== userId)
 
     const ownedBoardsLinks = ownedBoards.map((board) =>
         <div key={`owned${board.uid}`}>
