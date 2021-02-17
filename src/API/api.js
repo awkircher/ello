@@ -96,5 +96,43 @@ export const api = function() {
             console.log(error)
         }
     }
-    return { authenticateUser, getUser, getBoard, getList, getCard, getBoardsByUserId }
+    const getListsByBoardId = async function(boardId) {
+        // return an array of list objects
+        try {
+            let board = await getBoard(boardId);
+            if (!board) {
+                throw new Error('board not found')
+            } else {
+                try {
+                    let listPromises = board.listIds.map(async id => getList(id));
+                    // wait until all mapped Promises are fulfilled
+                    return await Promise.all(listPromises);
+                } catch(error) {
+                    console.log(error)
+                }
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const getCardsByListId = async function(listId) {
+        // return an array of card objects
+        try {
+            let list = await getList(listId);
+            if (!list) {
+                throw new Error('list not found')
+            } else {
+                try {
+                    let cardPromises = list.cardIds.map(async id => getCard(id));
+                    // wait until all mapped Promises are fulfilled
+                    return await Promise.all(cardPromises);
+                } catch(error) {
+                    console.log(error)
+                }
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    return { authenticateUser, getUser, getBoard, getList, getCard, getBoardsByUserId, getListsByBoardId, getCardsByListId }
 }
