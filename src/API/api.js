@@ -81,7 +81,7 @@ export const api = function() {
                 throw new Error('user not found')
             } else {
                 try {
-                    let boardPromises = user.boards.map(async id => getBoard(id));
+                    let boardPromises = user.boardIds.map(async id => getBoard(id));
                     if (boardPromises.length < 1) {
                         throw new Error('no boards found')
                     } else {
