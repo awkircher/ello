@@ -1,0 +1,37 @@
+{
+    "Lists": [
+        {
+            "uid": "luid123",
+            "name":"to do on board buid123 has one card",
+            "cards": [
+                "cuid123"
+            ]
+        },
+        {
+            "uid":"lui456",
+            "name":"in progress on board buid123 has one card",
+            "cards": [
+                "cuid456"
+            ]
+        },
+        {
+            "uid":"lui789",
+            "name":"today on board buid456 has one card",
+            "cards": [
+                "cuid999"
+            ]
+        },
+        {
+            "uid":"lui000",
+            "name":"tasks on buid789 has one card",
+            "cards": [
+                "cuid111"
+            ]
+        },
+        {
+            "uid":"lui001",
+            "name":"done on buid789 has no cards",
+            "cards": null
+        }
+    ]
+}

@@ -6,7 +6,7 @@ export const Form = function(props) {
                     const elem = event.target;
                     const username = elem[0].value;
                     const password = elem[1].value;
-                    props.verifyUser(username, password)
+                    props.checkUserCredentials(username, password)
                 }}>
                 <input type="text" placeholder="username"></input>
                 <input type="text" placeholder="password"></input>

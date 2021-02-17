@@ -1,0 +1,32 @@
+{ 
+    "Users": [
+        {
+            "uid":"uuid123",
+            "username":"ashley",
+            "password":"secret1",
+            "boards": [
+                "buid123",
+                "buid789",
+                "buid456"
+            ]
+        },
+        { 
+            "uid":"uuid456",
+            "username":"eliot",
+            "password":"secret1",
+            "boards": [
+                "buid456",
+                "buid123"
+            ]
+        },
+        {
+            "uid":"uuid789",
+            "username":"naftali",
+            "password":"secret1",
+            "boards": [
+                "buid789",
+                "buid456"
+            ]
+        }
+    ]
+}

@@ -5,7 +5,7 @@ export const LoginView = function(props) {
         <div>
             <h1>Login</h1>
             <Form
-            verifyUser={props.verifyUser} />
+            checkUserCredentials={props.checkUserCredentials} />
         </div>
     )
 }

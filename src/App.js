@@ -3,24 +3,30 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
+import { useState } from 'react'
 import { LoginView } from "./Views/LoginView"
 import { DashboardView } from "./Views/DashboardView"
-import { getUser } from './API/api'
+import { api } from './API/api'
 import './App.css';
+import { UserContext } from './Models/UserContext';
 
 export function App() {
-  const verifyUser = async function(username, password) {
-    let user = await getUser(username, password);
+  const [loggedIn, setLoggedIn] = useState();
+  const remote = api();
+  const checkUserCredentials = async function(username, password) {
+    let user = await remote.authenticateUser(username, password);
     if (user) {
-      console.log(user)
+      setLoggedIn(user);
     } else {
       console.log(`try again`)
     }
   }
 
   return (
+    <UserContext.Provider value={loggedIn}>
     <div className="App">
       <Router>
       <div>
@@ -37,15 +43,16 @@ export function App() {
 
         <Switch>
           <Route exact path="/">
-            <LoginView
-            verifyUser={verifyUser} />
+            {loggedIn ? <Redirect to="/dashboard" /> :
+            <LoginView checkUserCredentials={checkUserCredentials} />}
           </Route>
           <Route exact path="/dashboard">
-            <DashboardView />
+              <DashboardView />
           </Route>
         </Switch>
       </div>
       </ Router>
     </div>
+    </UserContext.Provider>
   );
 }
