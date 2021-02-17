@@ -1,7 +1,7 @@
 {
     "Lists": [
         {
-            "uid": "luid123",
+            "uid":"lui123",
             "name":"to do on board buid123 has one card",
             "cardIds": [
                 "cuid123"

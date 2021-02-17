@@ -1,5 +1,5 @@
-export const Card = function() {
+export const Card = function(props) {
     return (
-        <div>Card!</div>
+        <div>{props.title}</div>
     )
 }

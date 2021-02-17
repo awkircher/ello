@@ -32,12 +32,12 @@ export const DashboardView = function() {
     
     const ownedBoardsLinks = ownedBoards.map((board) =>
     <div key={`owned${board.uid}`}>
-            <Link to={`/board/${board.uid}`}>{board.name}</Link>
+            <Link to={`/${board.uid}/${board.name}`}>{board.name}</Link>
         </div>
     );
     const sharedBoardsLinks = sharedBoards.map((board) => 
     <div key={`shared${board.uid}`}>
-            <Link to={`/board/${board.uid}`}>{board.name}</Link>
+            <Link to={`/${board.uid}/${board.name}`}>{board.name}</Link>
         </div>
     );
     
@@ -53,17 +53,19 @@ export const DashboardView = function() {
         return (
             <div>
                 <h1>Hi {user.username}!</h1>
-                <Router>
+                <h2>Your Boards</h2>
+                {ownedBoardsLinks}
+                <h2>Shared Boards</h2>
+                {sharedBoardsLinks}
+                {/* <Router>
                     <Switch>
                         <Route exact path="/dashboard">
-                            <h2>Your Boards</h2>
-                            {ownedBoardsLinks}
-                            <h2>Shared Boards</h2>
-                            {sharedBoardsLinks}
                         </Route>
-                        <Route exact path="/board/:boardId" component={BoardView}></Route>
+                        <Route exact path="/:boardId/:boardName">
+                            <BoardView />
+                        </Route>
                     </Switch>
-                </ Router>
+                </ Router> */}
             </div>
         )
     }

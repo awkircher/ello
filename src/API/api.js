@@ -98,6 +98,7 @@ export const api = function() {
     }
     const getListsByBoardId = async function(boardId) {
         // return an array of list objects
+        console.log('looking for ' + boardId)
         try {
             let board = await getBoard(boardId);
             if (!board) {
@@ -105,6 +106,7 @@ export const api = function() {
             } else {
                 try {
                     let listPromises = board.listIds.map(async id => getList(id));
+                    console.log(listPromises)
                     // wait until all mapped Promises are fulfilled
                     return await Promise.all(listPromises);
                 } catch(error) {

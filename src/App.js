@@ -12,6 +12,8 @@ import { DashboardView } from "./Views/DashboardView"
 import { api } from './API/api'
 import './App.css';
 import { UserContext } from './Models/UserContext';
+import { BoardView } from './Views/BoardView'
+import { NoMatch } from './Views/NoMatch'
 
 export function App() {
   const [loggedIn, setLoggedIn] = useState();
@@ -48,6 +50,12 @@ export function App() {
           </Route>
           <Route exact path="/dashboard">
               <DashboardView />
+          </Route>
+          <Route exact path="/:boardId/:boardName">
+              <BoardView />
+          </Route>
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
       </div>
