@@ -3,11 +3,11 @@
         { 
             "uid":"buid123",
             "name":"Ashley Board Eliot member and two lists",
-            "owner":"uuid123",
-            "members": [
+            "ownerId":"uuid123",
+            "memberIds": [
                 "uuid456"
             ],
-            "lists": [
+            "listIds": [
                 "lui123",
                 "lui456"
             ]
@@ -15,23 +15,23 @@
         {
             "uid":"buid456",
             "name":"Eliot Board Ashley Naftali members and one list",
-            "owner":"uuid456",
-            "members": [
+            "ownerId":"uuid456",
+            "memberIds": [
                 "uuid789",
                 "uuid123"
             ],
-            "lists": [
+            "listIds": [
                 "lui789"
             ]
         },
         {
             "uid":"buid789",
             "name":"Naftali Board Ashley member and two lists",
-            "owner":"uuid789",
-            "members": [
+            "ownerId":"uuid789",
+            "memberIds": [
                 "uuid123"
             ],
-            "lists": [
+            "listIds": [
                 "lui000",
                 "lui001"
             ]

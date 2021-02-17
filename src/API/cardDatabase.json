@@ -5,7 +5,7 @@
             "title":"make login page on list luid123",
             "description": null,
             "due date": null,
-            "members": [
+            "memberIds": [
                 "uuid456"
             ]
         },
@@ -14,14 +14,14 @@
             "title":"setup account on list luid456",
             "description": null,
             "due date": null,
-            "members": null
+            "memberIds": null
         },
         {
             "uid":"cuid999",
             "title":"laundry on list luid789",
             "description": null,
             "due date": null,
-            "members": [
+            "memberIds": [
                 "uuid123"
             ]
         },
@@ -30,7 +30,7 @@
             "title":"sign up for gym on lui000",
             "description": "FFC, call Mary",
             "due date": null,
-            "members": null
+            "memberIds": null
         }
     ]
 }
