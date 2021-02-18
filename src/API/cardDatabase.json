@@ -14,7 +14,7 @@
             "title":"setup account on list luid456",
             "description": null,
             "due date": null,
-            "memberIds": null
+            "memberIds": []
         },
         {
             "uid":"cuid999",
@@ -30,7 +30,7 @@
             "title":"sign up for gym on lui000",
             "description": "FFC, call Mary",
             "due date": null,
-            "memberIds": null
+            "memberIds": []
         }
     ]
 }
