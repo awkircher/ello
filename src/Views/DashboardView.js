@@ -1,13 +1,8 @@
 import { UserContext } from "../Models/UserContext"
-import { BoardView } from "./BoardView";
+import { Navigation } from "../Components/Navigation";
 import { api } from "../API/api"
 import { useContext, useState, useEffect } from "react"
-import {
-    BrowserRouter as Router,
-    Link,
-    Switch,
-    Route
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const DashboardView = function() {
     const [isLoading, setIsLoading] = useState(true)
@@ -52,6 +47,7 @@ export const DashboardView = function() {
     } else {
         return (
             <div>
+                <Navigation />
                 <h1>Hi {user.username}!</h1>
                 <h2>Your Boards</h2>
                 {ownedBoardsLinks}

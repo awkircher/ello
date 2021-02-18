@@ -1,7 +1,7 @@
 export const NoMatch = function() {
     return (
         <div>
-            No match
+            oops...something went wrong :(
         </div>
     )
 }

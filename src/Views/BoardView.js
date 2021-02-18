@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useRouteMatch } from "react-router-dom"
 import { api } from "../API/api"
 import { List } from "../Components/List"
+import { Navigation } from "../Components/Navigation"
 
 export const BoardView = function(props) {
     const [isLoading, setIsLoading] = useState(true)
@@ -44,6 +45,7 @@ export const BoardView = function(props) {
     } else {
         return (
             <div>
+                <Navigation />
                 <h1>{match.params.boardName}</h1>
                 {listDisplay}
             </div>

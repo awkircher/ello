@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from "react-router-dom";
 import { useState } from 'react'
@@ -31,18 +30,6 @@ export function App() {
     <UserContext.Provider value={loggedIn}>
     <div className="App">
       <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          </ul>
-        </nav>
-
         <Switch>
           <Route exact path="/">
             {loggedIn ? <Redirect to="/dashboard" /> :
@@ -58,7 +45,6 @@ export function App() {
             <NoMatch />
           </Route>
         </Switch>
-      </div>
       </ Router>
     </div>
     </UserContext.Provider>
