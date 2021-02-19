@@ -15,10 +15,10 @@ export const DashboardView = function() {
         if (!user) {
             return;
         }
-        let response = await remote.getBoardsByUserId(user.uid);
+        let response = await remote.getBoardsByUserId(user.currentUser.uid);
         if (response) {
-            setOwnedBoards(response.filter((board) => board.ownerId === user.uid))
-            setSharedBoards(response.filter((board) => board.ownerId !== user.uid))
+            setOwnedBoards(response.filter((board) => board.ownerId === user.currentUser.uid))
+            setSharedBoards(response.filter((board) => board.ownerId !== user.currentUser.uid))
             setIsLoading(false)
         } else {
             console.log('not found')
@@ -48,20 +48,13 @@ export const DashboardView = function() {
         return (
             <div>
                 <Navigation />
-                <h1>Hi {user.username}!</h1>
+                <h1>Hi {user.currentUser.username}!</h1>
+                
                 <h2>Your Boards</h2>
                 {ownedBoardsLinks}
                 <h2>Shared Boards</h2>
                 {sharedBoardsLinks}
-                {/* <Router>
-                    <Switch>
-                        <Route exact path="/dashboard">
-                        </Route>
-                        <Route exact path="/:boardId/:boardName">
-                            <BoardView />
-                        </Route>
-                    </Switch>
-                </ Router> */}
+                
             </div>
         )
     }

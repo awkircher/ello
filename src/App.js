@@ -1,11 +1,10 @@
-import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
 } from "react-router-dom";
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { LoginView } from "./Views/LoginView"
 import { DashboardView } from "./Views/DashboardView"
 import { api } from './API/api'
@@ -15,31 +14,48 @@ import { BoardView } from './Views/BoardView'
 import { NoMatch } from './Views/NoMatch'
 
 export function App() {
-  const [loggedIn, setLoggedIn] = useState();
   const remote = api();
+  const userDefaults = useContext(UserContext)
+  const [user, setUser] = useState(userDefaults);
+
   const checkUserCredentials = async function(username, password) {
-    let user = await remote.authenticateUser(username, password);
-    if (user) {
-      setLoggedIn(user);
+    let response = await remote.authenticateAndGetUser(username, password);
+    if (response) {
+      setUser({
+        currentUser: response,
+        isLoggedIn: true,
+        setLogOut: (isLoggedIn) => {
+          if (isLoggedIn) {
+            setUser(userDefaults)
+          };
+        }
+      });
+      console.log(user)
     } else {
       console.log(`try again`)
     }
   }
 
   return (
-    <UserContext.Provider value={loggedIn}>
+    <UserContext.Provider value={user}>
     <div className="App">
       <Router>
         <Switch>
           <Route exact path="/">
-            {loggedIn ? <Redirect to="/dashboard" /> :
+            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.username}/boards`} /> :
             <LoginView checkUserCredentials={checkUserCredentials} />}
           </Route>
-          <Route exact path="/dashboard">
-              <DashboardView />
+          <Route exact path="/login">
+            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.username}/boards`} /> :
+            <LoginView checkUserCredentials={checkUserCredentials} />}
+          </Route>
+          <Route exact path="/:username/boards">
+            {user.isLoggedIn ? <DashboardView /> :
+            <Redirect to="/login" />}
           </Route>
           <Route exact path="/:boardId/:boardName">
-              <BoardView />
+            {user.isLoggedIn ? <BoardView /> :
+            <Redirect to="/login" />}
           </Route>
           <Route>
             <NoMatch />

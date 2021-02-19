@@ -36,8 +36,6 @@ export const BoardView = function(props) {
         initLists(match.params.boardId);
     },[])
 
-    console.log('hi!')
-
     if (isLoading) {
         return (
             <div>Please hold!</div>

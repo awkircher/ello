@@ -1,5 +1,9 @@
 import { createContext } from 'react';
 
 export const UserContext = createContext({
-  default: null
+  currentUser: null,
+  isLoggedIn: false,
+  setIsLoggedIn: (isLoggedIn) => {
+    return !isLoggedIn
+  },
 });

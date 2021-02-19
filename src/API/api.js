@@ -4,14 +4,14 @@ import listDatabase from './listDatabase.json'
 import cardDatabase from './cardDatabase.json'
 
 export const api = function() {
-    const authenticateUser = async function(username, password) {
+    const authenticateAndGetUser = async function(username, password) {
         try {
             const isValidUser = (user) => user.username === username && user.password === password;
             let index = await Promise.resolve(userDatabase.Users.findIndex(isValidUser));
             if (index === -1) {
                 throw new Error(`username or password are incorrect`)
             } else {
-                return userDatabase.Users[index];
+                return userDatabase.Users[index]
             }
         } catch(error) {
             console.log(error)
@@ -25,7 +25,7 @@ export const api = function() {
             if (index === -1) {
                 throw new Error(`user not found`)
             } else {
-                return userDatabase.Users[index];
+                return userDatabase.Users[index]
             }
         } catch(error) {
             console.log(error)
@@ -81,7 +81,7 @@ export const api = function() {
                 throw new Error('user not found')
             } else {
                 try {
-                    let boardPromises = user.boardIds.map(async id => getBoard(id));
+                    let boardPromises = user.boardIds.map(async id => getBoard(id)); //user.details.boardIds.map(async id => getBoard(id));
                     if (boardPromises.length < 1) {
                         throw new Error('no boards found')
                     } else {
@@ -136,5 +136,5 @@ export const api = function() {
             console.log(error)
         }
     }
-    return { authenticateUser, getUser, getBoard, getList, getCard, getBoardsByUserId, getListsByBoardId, getCardsByListId }
+    return { authenticateAndGetUser, getUser, getBoard, getList, getCard, getBoardsByUserId, getListsByBoardId, getCardsByListId }
 }
