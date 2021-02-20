@@ -1,6 +1,9 @@
+import './Form.css'
+
 export const Form = function(props) {
     return (
-        <div>
+        <div className="container">
+            <h1>Log in to Ello</h1>
             <form onSubmit={(event) => {
                     event.preventDefault();
                     const elem = event.target;

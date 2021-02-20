@@ -1,9 +1,11 @@
 import { Form } from "../Components/Form"
+import logo from '../logo.png'
+import './LoginView.css'
 
 export const LoginView = function(props) {
     return (
         <div>
-            <h1>Login</h1>
+            <img src={logo} alt="Ello logo"></img>
             <Form
             checkUserCredentials={props.checkUserCredentials} />
         </div>
