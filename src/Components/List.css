@@ -1,0 +1,18 @@
+.List {
+    grid-column: span 1;
+    background-color: var(--light-gray);
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 0.5rem;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.listName {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark-blue);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}

@@ -1,4 +1,4 @@
-.container {
+.Form {
     background-color: #FFFFFF;
     border-radius: 3px;
     padding: 25px 40px;
@@ -8,7 +8,7 @@
     margin: auto;
 }
 
-input {
+.Form input {
     font-size: 14px;
     background-color: #FAFBFC;
     border: 2px solid #DFE1E6;
@@ -25,9 +25,9 @@ input {
     padding: 0.6em;
 }
 
-button {
+button[type="submit"] {
     border-radius: .3em;
-    background: #5AAC44;
+    background: var(--green);
     color: #fff;
     padding: .6em 1.3em;
     position: relative;
@@ -38,7 +38,7 @@ button {
     margin-bottom: 20px;
 }
 
-h1 {
+.Form h1 {
     text-align: center;
     color: #5E6C84;
     font-size: 16px;

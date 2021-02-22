@@ -1,3 +1,7 @@
 body {
   background: #F9FAFC;
 }
+
+button {
+  cursor: pointer;
+}
