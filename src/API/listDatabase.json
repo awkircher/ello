@@ -2,14 +2,16 @@
     "Lists": [
         {
             "uid":"lui123",
-            "name":"to do on board buid123 has one card",
+            "name":"to do",
             "cardIds": [
-                "cuid123"
+                "cuid123",
+                "cuid111",
+                "cuid999"
             ]
         },
         {
             "uid":"lui456",
-            "name":"in progress on board buid123 has one card",
+            "name":"in progress",
             "cardIds": [
                 "cuid456"
             ]
