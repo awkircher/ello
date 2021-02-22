@@ -39,6 +39,8 @@ export const DashboardView = function() {
     
     useEffect(() => {
         initBoards(user);
+        let title = `Boards | Ello`
+        document.title = title;
     },[])
     
     if (isLoading) {

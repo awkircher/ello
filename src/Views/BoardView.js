@@ -35,6 +35,8 @@ export const BoardView = function(props) {
     
     useEffect(() => {
         initLists(match.params.boardId);
+        let title = `${match.params.boardName} | Ello`;
+        document.title = title;
     },[])
 
     if (isLoading) {
