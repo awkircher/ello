@@ -22,6 +22,7 @@ input {
     transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
     margin: 0 0 1.2em;
     display: block;
+    padding: 0.6em;
 }
 
 button {
@@ -32,4 +33,17 @@ button {
     position: relative;
     text-decoration: none;
     border: 0px;
+    width: 100%;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #5E6C84;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+    line-height: 28px;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
