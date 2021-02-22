@@ -2,7 +2,7 @@ import './Form.css'
 
 export const Form = function(props) {
     return (
-        <div className="container">
+        <div className="Form">
             <h1>Log in to Ello</h1>
             <form onSubmit={(event) => {
                     event.preventDefault();

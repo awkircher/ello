@@ -3,6 +3,7 @@ import { Navigation } from "../Components/Navigation";
 import { api } from "../API/api"
 import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom";
+import "./DashboardView.css"
 
 export const DashboardView = function() {
     const [isLoading, setIsLoading] = useState(true)
@@ -26,14 +27,14 @@ export const DashboardView = function() {
     };
     
     const ownedBoardsLinks = ownedBoards.map((board) =>
-    <div key={`owned${board.uid}`}>
-            <Link to={`/${board.uid}/${board.name}`}>{board.name}</Link>
-        </div>
+        <Link className="boardTile" key={`owned${board.uid}`} to={`/${board.uid}/${board.name}`}>
+            <div>{board.name}</div>
+        </Link>
     );
     const sharedBoardsLinks = sharedBoards.map((board) => 
-    <div key={`shared${board.uid}`}>
-            <Link to={`/${board.uid}/${board.name}`}>{board.name}</Link>
-        </div>
+        <Link className="boardTile" key={`shared${board.uid}`} to={`/${board.uid}/${board.name}`}>
+            <div>{board.name}</div>
+        </Link>
     );
     
     useEffect(() => {
@@ -46,15 +47,18 @@ export const DashboardView = function() {
         )
     } else {
         return (
-            <div>
+            <div className="Dashboard">
                 <Navigation />
-                <h1>Hi {user.currentUser.username}!</h1>
-                
-                <h2>Your Boards</h2>
-                {ownedBoardsLinks}
-                <h2>Shared Boards</h2>
-                {sharedBoardsLinks}
-                
+                <div className="boardTiles">
+                    <h1>Your Boards</h1>
+                    <section className="recents">
+                        {ownedBoardsLinks}
+                    </section>
+                    <h1>Shared Boards</h1>
+                    <section className="all">
+                        {sharedBoardsLinks}
+                    </section>
+                </div>
             </div>
         )
     }

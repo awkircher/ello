@@ -1,5 +1,7 @@
+import "./Card.css"
+
 export const Card = function(props) {
     return (
-        <div>{props.title}</div>
+        <div className="Card">{props.title}</div>
     )
 }

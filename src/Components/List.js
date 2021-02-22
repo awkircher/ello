@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card } from './Card'
 import { api } from '../API/api'
+import "./List.css"
 
 export const List = function(props) {
     const [isLoading, setIsLoading] = useState(true)
@@ -38,8 +39,8 @@ export const List = function(props) {
         )
     } else {
         return (
-            <div>
-                <h1>{props.name}</h1>
+            <div className="List">
+                <p className="listName">{props.name}</p>
                 {cardDisplay}
             </div>
         )

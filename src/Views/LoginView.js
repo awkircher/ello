@@ -1,5 +1,5 @@
 import { Form } from "../Components/Form"
-import logo from '../logo.png'
+import logo from '../logo.svg'
 import './LoginView.css'
 
 export const LoginView = function(props) {

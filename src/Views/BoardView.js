@@ -3,6 +3,7 @@ import { useRouteMatch } from "react-router-dom"
 import { api } from "../API/api"
 import { List } from "../Components/List"
 import { Navigation } from "../Components/Navigation"
+import "./BoardView.css"
 
 export const BoardView = function(props) {
     const [isLoading, setIsLoading] = useState(true)
@@ -44,8 +45,12 @@ export const BoardView = function(props) {
         return (
             <div>
                 <Navigation />
-                <h1>{match.params.boardName}</h1>
-                {listDisplay}
+                <div className="boardDetailBar">
+                    <h1>{match.params.boardName}</h1>
+                </div>
+                <div className="listsContainer">
+                    {listDisplay}
+                </div>
             </div>
         )
     }

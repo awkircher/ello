@@ -2,6 +2,8 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../Models/UserContext'
 import './Navigation.css'
+import logo from '../icons/logo-white.svg'
+import home from '../icons/home-icon.svg'
 
 export const Navigation = function(props) {
     const user = useContext(UserContext)
@@ -11,9 +13,13 @@ export const Navigation = function(props) {
     return (
         <nav className={isDashboard ? 'dash' : 'board'}>
             <Link className="buttonContainer" to={`/${user.currentUser.username}/boards`}>
-                <button className="main">&#8962;</button>
+                <button className="main">
+                    <img src={home} alt="home icon"></img>
+                </button>
             </Link>
-            <Link to="/">LOGO</Link>
+            <Link className="logoContainer" to="/">
+                <img src={logo} alt="logo"></img>
+            </Link>
             <Link to="/login">
                 <button className="nested" onClick={() => {user.setLogOut(user.isLoggedIn);}}>
                     Log out
