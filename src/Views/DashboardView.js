@@ -4,6 +4,8 @@ import { api } from "../API/api"
 import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom";
 import "./DashboardView.css"
+import recent from "../icons/recent-icon-dark.svg"
+import member from "../icons/member-icon-dark.svg"
 
 export const DashboardView = function() {
     const [isLoading, setIsLoading] = useState(true)
@@ -52,11 +54,17 @@ export const DashboardView = function() {
             <div className="Dashboard">
                 <Navigation />
                 <div className="boardTiles">
-                    <h1>Your Boards</h1>
+                    <div className="sectionTitle">
+                        <img src={recent} alt="recently viewed icon"></img>
+                        <h1>Your Boards</h1>
+                    </div>
                     <section className="recents">
                         {ownedBoardsLinks}
                     </section>
-                    <h1>Shared Boards</h1>
+                    <div className="sectionTitle">
+                        <img src={member} alt="member icon"></img>
+                        <h1>Shared Boards</h1>
+                    </div>
                     <section className="all">
                         {sharedBoardsLinks}
                     </section>

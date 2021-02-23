@@ -1,0 +1,50 @@
+.UserAccount {
+    position: relative;
+}
+
+.userIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    background-color: var(--blue-green);
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu.open {
+    background-color: white;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 240px;
+    padding: 24px 0px;
+    color: var(--dark-blue);
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px rgb(9 30 66 / 25%), 0 0 0 1px rgb(9 30 66 / 8%);
+    text-align: left;
+    z-index: 100;
+}
+
+.menu a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.menuItem {
+    padding: 4px 24px;
+}
+
+.menuItem:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.menu.closed {
+    display: none;
+}

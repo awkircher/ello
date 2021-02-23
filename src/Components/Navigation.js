@@ -1,6 +1,7 @@
 import { Link, useRouteMatch } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../Models/UserContext'
+import { UserAccount } from './UserAccount'
 import './Navigation.css'
 import logo from '../icons/logo-white.svg'
 import home from '../icons/home-icon.svg'
@@ -20,11 +21,7 @@ export const Navigation = function(props) {
             <Link className="logoContainer" to="/">
                 <img src={logo} alt="logo"></img>
             </Link>
-            <Link to="/login">
-                <button className="nested" onClick={() => {user.setLogOut(user.isLoggedIn);}}>
-                    Log out
-                </button>
-            </Link>
+            <UserAccount user={user} />
         </nav>
     )
 }
