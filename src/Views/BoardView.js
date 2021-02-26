@@ -3,6 +3,7 @@ import { useRouteMatch } from "react-router-dom"
 import { api } from "../API/api"
 import { List } from "../Components/List"
 import { Navigation } from "../Components/Navigation"
+import { Add } from "../Components/Add"
 import "./BoardView.css"
 
 export const BoardView = function(props) {
@@ -24,9 +25,9 @@ export const BoardView = function(props) {
         }
     };
 
-    const refreshLists = async function() { 
+    const refreshLists = async function(input) { 
         const newList = {
-            name: 'test list',
+            name: input,
             cardIds: null
         }
         let addedList = await remote.addList(newList);
@@ -82,7 +83,10 @@ export const BoardView = function(props) {
                     </div>
                     <div className="listsContainer">
                         {listDisplay}
-                        <button className="add" onClick={refreshLists}>Add another list</button>
+                        <Add 
+                            source="list"
+                            add={refreshLists}
+                        />
                     </div>
                 </div>
             </div>

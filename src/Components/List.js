@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Card } from './Card'
 import { api } from '../API/api'
 import { Delete } from './Delete'
+import { Add } from './Add'
 import "./List.css"
 
 export const List = function(props) {
@@ -25,9 +26,9 @@ export const List = function(props) {
         }
     };
 
-    const refreshCards = async function() { 
+    const refreshCards = async function(input) { 
         const newCard = {
-            title: 'test card',
+            title: input,
         }
         let addedCard = await remote.addCard(newCard);
         if (addedCard) {
@@ -73,13 +74,18 @@ export const List = function(props) {
     } else {
         return (
             <div className="List">
-                <Delete 
-                    uid={props.listId}
-                    delete={props.deleteList}
-                />
-                <p className="listName">{props.name}</p>
+                <div className="listName">
+                    {props.name}
+                    <Delete 
+                        uid={props.listId}
+                        delete={props.deleteList}
+                    />
+                </div>
                 {cardDisplay}
-                <button className="add" onClick={refreshCards}>Add another card</button>
+                <Add 
+                    source="card"
+                    add={refreshCards}
+                />
             </div>
         )
     }

@@ -6,4 +6,7 @@
     text-align: left;
     border-radius: 3px;
     box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
 }

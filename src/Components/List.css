@@ -15,4 +15,11 @@
     margin: 0;
     padding: 0;
     text-align: left;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Delete {
+    justify-self: right;
 }
