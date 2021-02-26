@@ -12,7 +12,7 @@ nav.dash {
 
 nav.board {
     background: rgba(0,0,0,0.3);
-    mix-blend-mode: multiply;
+    background-blend-mode: multiply;
 }
 
 .buttonContainer {
