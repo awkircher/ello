@@ -18,8 +18,9 @@ export function App() {
   const userDefaults = useContext(UserContext)
   const [user, setUser] = useState(userDefaults);
 
-  const checkUserCredentials = async function(username, password) {
-    let response = await remote.authenticateAndGetUser(username, password);
+  const checkUserCredentials = async function(email, password) {
+    let response = await remote.authenticateAndGetUser(email, password);
+    console.log('auth response is ', response)
     if (response) {
       setUser({
         currentUser: response,
@@ -30,7 +31,7 @@ export function App() {
           };
         }
       });
-      console.log(user)
+      console.log('the state variable user is ', user)
     } else {
       console.log(`try again`)
     }

@@ -1,9 +1,9 @@
 export class BoardClass {
-    constructor(name, uid, ownerId) {
+    constructor(name, uid, ownerId, listIds, memberIds) {
       this.name = name;
       this.uid = uid;
       this.ownerId = ownerId;
-      this.listIds = [];
-      this.memberIds = [];
+      this.listIds = listIds;
+      this.memberIds = memberIds;
     }
   }

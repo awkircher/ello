@@ -1,8 +1,8 @@
 { 
     "Users": [
         {
-            "uid":"uuid123",
-            "username":"ashley",
+            "uid":"CV7bhaNF8FfwWFN8qdPpZjMqoKB2",
+            "username":"ashley@g.co",
             "password":"secret1",
             "boardIds": [
                 "buid123",
@@ -11,8 +11,8 @@
             ]
         },
         { 
-            "uid":"uuid456",
-            "username":"eliot",
+            "uid":"64TEzNzrW6SBGIubdA3Pgn5BdKs2",
+            "username":"eliot@g.co",
             "password":"secret1",
             "boardIds": [
                 "buid456",
@@ -20,8 +20,8 @@
             ]
         },
         {
-            "uid":"uuid789",
-            "username":"naftali",
+            "uid":"TPA6ciDpCzYLgj7svYIBD0pfXfr2",
+            "username":"naftali@g.co",
             "password":"secret1",
             "boardIds": [
                 "buid789",

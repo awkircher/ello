@@ -1,7 +1,7 @@
 export class ListClass {
-    constructor(name, uid) {
+    constructor(name, uid, cardIds) {
         this.name = name;
         this.uid = uid;
-        this.cardIds = [];
+        this.cardIds = cardIds;
     }
 }

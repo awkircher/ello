@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './UserAccount.css'
 
 export const UserAccount = function(props) {
-    const username = props.user.currentUser.username;
-    const firstInitial = username.slice(0,1);
+    const email = props.user.currentUser.email;
+    const firstInitial = email.slice(0,1);
     const [isOpen, setIsOpen] = useState(false);
     
     const openMenu = function() {

@@ -1,45 +1,135 @@
-import userDatabase from './userDatabase.json'
-import boardDatabase from './boardDatabase.json'
-import listDatabase from './listDatabase.json'
-import cardDatabase from './cardDatabase.json'
+import firebase from "firebase/app"
+import "firebase/firestore"
+import "firebase/auth"
+import { UserClass } from '../Models/UserClass'
+import { BoardClass } from '../Models/BoardClass'
+import { ListClass } from '../Models/ListClass'
+import { CardClass } from '../Models/CardClass'
+
+const firebaseConfig = {
+    apiKey: `${process.env.REACT_APP_APIKEY}`,
+    authDomain: `${process.env.REACT_APP_AUTHDOMAIN}`,
+    projectId: `${process.env.REACT_APP_PROJECTID}`,
+    storageBucket: `${process.env.REACT_APP_STORAGEBUCKET}`,
+    messagingSenderId: `${process.env.REACT_APP_MESSENGINGSENDERID}`,
+    appId: `${process.env.REACT_APP_APPID}`
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const userConverter = {
+    toFirestore: function(user) {
+        console.log('toFirestore called with ', user)
+        return {
+            email: user.email,
+            password: user.password,
+            boardIds: user.boardIds
+            };
+    },
+    fromFirestore: function(snapshot, options) {
+        const data = snapshot.data(options);
+        const uid = snapshot.ref.id
+        console.log('fromFirestore called with ', data)
+        return new UserClass(data.email, uid, data.password, data.boardIds);
+    }
+}
+
+const boardConverter = {
+    toFirestore: function(board) {
+        console.log('toFirestore called with ', board)
+        return {
+            name: board.name,
+            ownerId: board.ownerId,
+            listIds: board.listIds,
+            memberIds: board.memberIds
+        };
+    },
+    fromFirestore: function(snapshot, options) {
+        const data = snapshot.data(options);
+        const uid = snapshot.ref.id
+        console.log('fromFirestore called with ', data)
+        return new BoardClass(data.name, uid, data.ownerId, data.listIds, data.memberIds)
+    }
+}
+
+const listConverter = {
+    toFirestore: function(list) {
+        console.log('toFirestore called with ', list)
+        return {
+            name: list.name,
+            cardIds: list.cardIds
+        }
+    },
+    fromFirestore: function(snapshot, options) {
+        const data = snapshot.data(options);
+        const uid = snapshot.ref.id
+        let cardIds;
+        console.log('fromFirestore called with ', data)
+        if (data.cardIds === "") {
+            cardIds = [];
+        } else {
+            cardIds = data.cardIds
+        }
+        return new ListClass(data.name, uid, cardIds)
+    }
+}
+
+const cardConverter = {
+    toFirestore: function(card) {
+        console.log('toFirestore called with ', card)
+        return {
+            title: card.title
+        }
+    },
+    fromFirestore: function(snapshot, options) {
+        const data = snapshot.data(options);
+        const uid = snapshot.ref.id
+        console.log('fromFirestore called with ', data)
+        return new CardClass(data.title, uid)
+    }
+}
 
 export const api = function() {
-    const authenticateAndGetUser = async function(username, password) {
+    const db = firebase.firestore()
+    const getUser = async function(uid) {
+        // get the user specified by the uid
+        console.log('getUser called with uid ', uid)
         try {
-            const isValidUser = (user) => user.username === username && user.password === password;
-            let index = await Promise.resolve(userDatabase.Users.findIndex(isValidUser));
-            if (index === -1) {
-                throw new Error(`username or password are incorrect`)
+            const doc = await db.collection('users').doc(uid).withConverter(userConverter).get()
+            if (doc.exists) {
+                const user = doc.data();
+                return user;
             } else {
-                return userDatabase.Users[index]
+                throw new Error('user not found')
             }
         } catch(error) {
             console.log(error)
         }
     }
-    const getUser = async function(uid) {
-        // get the user specified by the uid
+    const authenticateAndGetUser = async function(email, password) {
         try {
-            const isUser = (user) => user.uid === uid;
-            let index = await Promise.resolve(userDatabase.Users.findIndex(isUser));
-            if (index === -1) {
-                throw new Error(`user not found`)
-            } else {
-                return userDatabase.Users[index]
+            const response = await firebase.auth().signInWithEmailAndPassword(email, password);
+            if (response) {
+                const uid = response.user.uid;
+                const user = await getUser(uid)
+                return user;
             }
         } catch(error) {
-            console.log(error)
-        }
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        };
     }
     const getBoard = async function(uid) {
         // get the board specified by the uid
+        console.log('getBoard called with uid ', uid)
         try {
-            const isBoard = (board) => board.uid === uid;
-            let index = await Promise.resolve(boardDatabase.Boards.findIndex(isBoard));
-            if (index === -1) {
-                throw new Error(`board not found`)
+            const doc = await db.collection('boards').doc(uid).withConverter(boardConverter).get()
+            if (doc.exists) {
+                const board = doc.data();
+                return board;
             } else {
-                return boardDatabase.Boards[index];
+                throw new Error('board not found')
             }
         } catch(error) {
             console.log(error)
@@ -47,13 +137,14 @@ export const api = function() {
     }
     const getList = async function(uid) {
         // get the list specified by the uid
+        console.log('getList called with ', uid)
         try {
-            const isList = (list) => list.uid === uid;
-            let index = await Promise.resolve(listDatabase.Lists.findIndex(isList));
-            if (index === -1) {
-                throw new Error(`list not found`)
+            let doc = await db.collection('lists').doc(uid).withConverter(listConverter).get();
+            if (doc.exists) {
+                const list = doc.data();
+                return list;
             } else {
-                return listDatabase.Lists[index];
+                throw new Error(`list not found`);
             }
         } catch(error) {
             console.log(error)
@@ -62,12 +153,12 @@ export const api = function() {
     const getCard = async function(uid) {
         // get the card specified by the uid
         try {
-            const isCard = (card) => card.uid === uid;
-            let index = await Promise.resolve(cardDatabase.Cards.findIndex(isCard));
-            if (index === -1) {
-                throw new Error(`card not found`)
+            let doc = await db.collection('cards').doc(uid).withConverter(cardConverter).get();
+            if (doc.exists) {
+                const card = doc.data();
+                return card;
             } else {
-                return cardDatabase.Cards[index];
+                throw new Error(`card not found`)
             }
         } catch(error) {
             console.log(error)
@@ -81,7 +172,7 @@ export const api = function() {
                 throw new Error('user not found')
             } else {
                 try {
-                    let boardPromises = user.boardIds.map(async id => getBoard(id)); //user.details.boardIds.map(async id => getBoard(id));
+                    let boardPromises = user.boardIds.map(async id => getBoard(id));
                     if (boardPromises.length < 1) {
                         throw new Error('no boards found')
                     } else {
@@ -136,5 +227,42 @@ export const api = function() {
             console.log(error)
         }
     }
-    return { authenticateAndGetUser, getUser, getBoard, getList, getCard, getBoardsByUserId, getListsByBoardId, getCardsByListId }
+    const updateBoard = async function(boardId, listId) {
+        try {
+            const boardRef = db.collection("boards").doc(boardId);
+            let response = await boardRef.update({
+                    listIds: firebase.firestore.FieldValue.arrayUnion(listId)
+                });
+            return response;
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const addList = async function(list) {
+        //add this object to the collection Lists
+        try {
+            let docRef = await db.collection("lists").withConverter(listConverter).add({
+                name: `${list.name}`, 
+                cardIds: `${list.cardIds}`})
+            if (docRef) {
+                const uid = docRef.id;
+                const addedList = new ListClass(list.name, uid, list.cardIds);
+                return addedList;
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    return { 
+        authenticateAndGetUser, 
+        getUser, 
+        getBoard, 
+        getList, 
+        getCard, 
+        getBoardsByUserId, 
+        getListsByBoardId, 
+        getCardsByListId,
+        updateBoard,
+        addList
+    }
 }

@@ -15,6 +15,7 @@ export const DashboardView = function() {
     const [sharedBoards, setSharedBoards] = useState([])
     
     const initBoards = async function(user) {
+        console.log('initBoards called with ', user)
         if (!user) {
             return;
         }

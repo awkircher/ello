@@ -20,9 +20,23 @@ export const BoardView = function(props) {
             setLists(response)
             setIsLoading(false)
         } else {
-            console.log('not found')
+            console.log('lists not found')
         }
     };
+
+    const refreshLists = async function() { 
+        const newList = {
+            name: 'test list',
+            cardIds: []
+        }
+        let response = await remote.addList(newList);
+        if (response) {
+            remote.updateBoard(match.params.boardId, response.uid)
+            setLists([...lists, response]) 
+        } else {
+            console.log('error adding new list')
+        }
+    }
     
     const listDisplay = lists.map((list) =>
         <div key={list.uid}>
@@ -52,6 +66,7 @@ export const BoardView = function(props) {
                 </div>
                 <div className="listsContainer">
                     {listDisplay}
+                    <button className="add" onClick={refreshLists}>Add another list</button>
                 </div>
             </div>
         )
