@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card } from './Card'
 import { api } from '../API/api'
+import { Delete } from './Delete'
 import "./List.css"
 
 export const List = function(props) {
@@ -13,11 +14,14 @@ export const List = function(props) {
             return;
         }
         let response = await remote.getCardsByListId(listId);
-        if (response) {
+        if (response === 'no cards in this list') {
+            setCards([])
+            setIsLoading(false)
+        } else if (response) {
             setCards(response)
             setIsLoading(false)
         } else {
-            console.log('not found')
+            console.log('somthing went wrong')
         }
     };
 
@@ -33,10 +37,26 @@ export const List = function(props) {
             console.log('error adding new card')
         }
     }
+
+    const deleteCard = async function(cardId) {
+        let response = await remote.deleteCard(cardId);
+        if (response === undefined) {
+            remote.removeFromList(props.listId, cardId)
+            const copyOfCards = cards.slice();
+            const isCard = (card) => card.uid === cardId;
+            const indexOfMatch = copyOfCards.findIndex(isCard);
+            copyOfCards.splice(indexOfMatch, 1)
+            setCards(copyOfCards)
+        } else {
+            console.log('there was an error deleting the card')
+        }
+    }
     
     const cardDisplay = cards.map((card) =>
         <div key={card.uid}>
             <Card 
+                deleteCard={deleteCard}
+                cardId={card.uid}
                 title={card.title}
             />
         </div>
@@ -53,6 +73,10 @@ export const List = function(props) {
     } else {
         return (
             <div className="List">
+                <Delete 
+                    uid={props.listId}
+                    delete={props.deleteList}
+                />
                 <p className="listName">{props.name}</p>
                 {cardDisplay}
                 <button className="add" onClick={refreshCards}>Add another card</button>

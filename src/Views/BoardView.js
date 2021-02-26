@@ -27,7 +27,7 @@ export const BoardView = function(props) {
     const refreshLists = async function() { 
         const newList = {
             name: 'test list',
-            cardIds: []
+            cardIds: null
         }
         let addedList = await remote.addList(newList);
         if (addedList) {
@@ -37,10 +37,25 @@ export const BoardView = function(props) {
             console.log('error adding new list')
         }
     }
+
+    const deleteList = async function(listId) {
+        let response = await remote.deleteList(listId);
+        if (response === undefined) {
+            remote.removeFromBoard(match.params.boardId, listId)
+            const copyOfLists = lists.slice();
+            const isList = (list) => list.uid === listId;
+            const indexOfMatch = copyOfLists.findIndex(isList);
+            copyOfLists.splice(indexOfMatch, 1)
+            setLists(copyOfLists)
+        } else {
+            console.log('there was an error deleting the list')
+        }
+    }
     
     const listDisplay = lists.map((list) =>
         <div key={list.uid}>
             <List 
+                deleteList={deleteList}
                 listId={list.uid}
                 name={list.name}
             />

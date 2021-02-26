@@ -63,14 +63,8 @@ const listConverter = {
     fromFirestore: function(snapshot, options) {
         const data = snapshot.data(options);
         const uid = snapshot.ref.id
-        let cardIds;
         console.log('fromFirestore called with ', data)
-        if (data.cardIds === "") {
-            cardIds = [];
-        } else {
-            cardIds = data.cardIds
-        }
-        return new ListClass(data.name, uid, cardIds)
+        return new ListClass(data.name, uid, data.cardIds)
     }
 }
 
@@ -174,6 +168,7 @@ export const api = function() {
                 try {
                     let boardPromises = user.boardIds.map(async id => getBoard(id));
                     if (boardPromises.length < 1) {
+                        //all users should have at least one board, since they get one at account creation.
                         throw new Error('no boards found')
                     } else {
                         // wait until all mapped Promises are fulfilled
@@ -196,6 +191,7 @@ export const api = function() {
                 throw new Error('board not found')
             } else {
                 try {
+                    //fix this! when adding a new board the listIds field will be null.
                     let listPromises = board.listIds.map(async id => getList(id));
                     console.log(listPromises)
                     // wait until all mapped Promises are fulfilled
@@ -214,6 +210,8 @@ export const api = function() {
             let list = await getList(listId);
             if (!list) {
                 throw new Error('list not found')
+            } else if (!list.cardIds) {
+                return 'no cards in this list'
             } else {
                 try {
                     let cardPromises = list.cardIds.map(async id => getCard(id));
@@ -238,17 +236,49 @@ export const api = function() {
             console.log(error)
         }
     }
+    const removeFromBoard = async function(boardId, listId) {
+        try {
+            const boardRef = db.collection("boards").doc(boardId);
+            let response = await boardRef.update({
+                listIds: firebase.firestore.FieldValue.arrayRemove(listId)
+            });
+            return response;
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const removeFromList = async function(listId, cardId) {
+        try {
+            const listRef = db.collection("lists").doc(listId);
+            let response = await listRef.update({
+                cardIds: firebase.firestore.FieldValue.arrayRemove(cardId)
+            });
+            return response;
+        } catch(error) {
+            console.log(error)
+        }
+    }
     const addList = async function(list) {
         //add this object to the collection Lists
         try {
             let docRef = await db.collection("lists").withConverter(listConverter).add({
-                name: `${list.name}`, 
-                cardIds: `${list.cardIds}`})
+                name: list.name, 
+                cardIds: list.cardIds})
             if (docRef) {
                 const uid = docRef.id;
                 const addedList = new ListClass(list.name, uid, list.cardIds);
                 return addedList;
             }
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const deleteList = async function(listId) {
+        console.log("deleteList called with id ", listId)
+        try {
+            const listRef = db.collection("lists").doc(listId);
+            let response = await listRef.delete()
+            console.log(response)
         } catch(error) {
             console.log(error)
         }
@@ -278,6 +308,16 @@ export const api = function() {
             console.log(error)
         }
     }
+    const deleteCard = async function(cardId) {
+        console.log("deleteCard called with id ", cardId)
+        try {
+            const cardRef = db.collection("cards").doc(cardId);
+            let response = await cardRef.delete()
+            console.log(response)
+        } catch(error) {
+            console.log(error)
+        }
+    }
     return { 
         authenticateAndGetUser, 
         getUser, 
@@ -288,8 +328,12 @@ export const api = function() {
         getListsByBoardId, 
         getCardsByListId,
         updateBoard,
+        removeFromBoard,
+        removeFromList,
         addList,
+        deleteList,
         updateList,
-        addCard
+        addCard,
+        deleteCard
     }
 }
