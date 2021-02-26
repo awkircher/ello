@@ -11,6 +11,11 @@
     grid-auto-columns: minmax(260px, 1fr);
 }
 
+.boardContainer {
+    overflow-x: scroll;
+    height: 93vh;
+}
+
 .boardDetailBar {
     padding: 0px 8px;
 }
