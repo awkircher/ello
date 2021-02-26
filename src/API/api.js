@@ -253,6 +253,31 @@ export const api = function() {
             console.log(error)
         }
     }
+    const updateList = async function(listId, cardId) {
+        try {
+            const listRef = db.collection("lists").doc(listId);
+            let response = await listRef.update({
+                    cardIds: firebase.firestore.FieldValue.arrayUnion(cardId)
+                });
+            return response;
+        } catch(error) {
+            console.log(error)
+        }
+    }
+    const addCard = async function(card) {
+        //add this object to the collection Lists
+        try {
+            let docRef = await db.collection("cards").withConverter(cardConverter).add({
+                title: card.title})
+            if (docRef) {
+                const uid = docRef.id;
+                const addedCard = new CardClass(card.title, uid);
+                return addedCard;
+            }
+        } catch(error) {
+            console.log(error)
+        }
+    }
     return { 
         authenticateAndGetUser, 
         getUser, 
@@ -263,6 +288,8 @@ export const api = function() {
         getListsByBoardId, 
         getCardsByListId,
         updateBoard,
-        addList
+        addList,
+        updateList,
+        addCard
     }
 }

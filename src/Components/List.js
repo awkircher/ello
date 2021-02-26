@@ -20,6 +20,19 @@ export const List = function(props) {
             console.log('not found')
         }
     };
+
+    const refreshCards = async function() { 
+        const newCard = {
+            title: 'test card',
+        }
+        let addedCard = await remote.addCard(newCard);
+        if (addedCard) {
+            remote.updateList(props.listId, addedCard.uid)
+            setCards([...cards, addedCard]) 
+        } else {
+            console.log('error adding new card')
+        }
+    }
     
     const cardDisplay = cards.map((card) =>
         <div key={card.uid}>
@@ -42,6 +55,7 @@ export const List = function(props) {
             <div className="List">
                 <p className="listName">{props.name}</p>
                 {cardDisplay}
+                <button className="add" onClick={refreshCards}>Add another card</button>
             </div>
         )
     }

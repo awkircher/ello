@@ -29,10 +29,10 @@ export const BoardView = function(props) {
             name: 'test list',
             cardIds: []
         }
-        let response = await remote.addList(newList);
-        if (response) {
-            remote.updateBoard(match.params.boardId, response.uid)
-            setLists([...lists, response]) 
+        let addedList = await remote.addList(newList);
+        if (addedList) {
+            remote.updateBoard(match.params.boardId, addedList.uid)
+            setLists([...lists, addedList]) 
         } else {
             console.log('error adding new list')
         }
@@ -61,12 +61,14 @@ export const BoardView = function(props) {
         return (
             <div>
                 <Navigation />
-                <div className="boardDetailBar">
-                    <h1>{match.params.boardName}</h1>
-                </div>
-                <div className="listsContainer">
-                    {listDisplay}
-                    <button className="add" onClick={refreshLists}>Add another list</button>
+                <div className="boardContainer">
+                    <div className="boardDetailBar">
+                        <h1>{match.params.boardName}</h1>
+                    </div>
+                    <div className="listsContainer">
+                        {listDisplay}
+                        <button className="add" onClick={refreshLists}>Add another list</button>
+                    </div>
                 </div>
             </div>
         )
