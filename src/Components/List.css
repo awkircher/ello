@@ -13,7 +13,7 @@
     font-weight: 700;
     color: var(--dark-blue);
     margin: 0;
-    padding: 0;
+    padding: 3px 0;
     text-align: left;
     display: grid;
     grid-template-rows: 1fr;

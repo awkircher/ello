@@ -1,7 +1,43 @@
+/* this class and children is only present before the form is rendered */
+.Add {
+    border-radius: 3px;
+}
+
+.Add button {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    padding: 0 8px;
+    text-align: left;
+    outline: none;
+    border: none;
+    color: var(--dark-blue);
+    background-color: transparent;
+}
+
+.Add.list {
+    background-color: rgba(0,0,0,0.08);
+}
+.Add.list:hover {
+    background-color: rgba(0,0,0,0.16);
+}
+
+.Add.card:hover {
+    background-color: rgba(0,0,0,0.08);
+}
+
+
+/*.addList and .addCard classes and children are visible after clicking Add*/
 .addList {
     background-color: var(--light-gray);
     padding: 8px;
     border-radius: 3px;
+}
+
+.addCard {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
 }
 
 .addCard form, .addList form {
@@ -10,11 +46,6 @@
     grid-template-columns: auto 1fr;
     grid-row-gap: 0.5rem;
     grid-column-gap: 0.5rem;
-}
-
-.Add button {
-    width: 100%;
-    margin: 0;
 }
 
 .addCard .cancel, .addList .cancel {
@@ -39,11 +70,6 @@
     padding: 0;
 }
 
-.addCard {
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-}
 
 .addCard textarea {
     grid-column: span 2;

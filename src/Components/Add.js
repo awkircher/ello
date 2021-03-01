@@ -7,9 +7,9 @@ export const Add = function(props) {
 
     if (!isActive) {
         return (
-            <div className="Add">
+            <div className={`Add ${props.source}`}>
                 <button onClick={() => setIsActive(true)}>
-                    Add another {props.source}
+                    &#43; Add another {props.source}
                 </button>
             </div>
         )
