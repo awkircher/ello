@@ -47,7 +47,7 @@
 
 /*.addList and .addCard classes and children are visible after clicking Add*/
 .addList {
-    animation: fadein 800ms ease 0s 1 forwards;
+    animation: fadein 600ms ease 0s 1 forwards;
     background-color: var(--light-gray);
     padding: 8px;
     border-radius: 3px;
@@ -129,6 +129,9 @@
 .addList button, .addCard button {
     margin: 0;
     width: auto;
+}
+
+.addList button {
     animation: slideDown 250ms ease 0s 1 forwards;
 }
 
