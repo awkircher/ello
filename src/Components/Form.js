@@ -12,7 +12,7 @@ export const Form = function(props) {
                     props.checkUserCredentials(username, password)
                 }}>
                 <input type="text" placeholder="username"></input>
-                <input type="text" placeholder="password"></input>
+                <input type="password" placeholder="password"></input>
                 <button type="submit">Sign in</button>
             </form>
         </div>
