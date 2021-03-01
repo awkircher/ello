@@ -1,3 +1,22 @@
+/* animation */
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translate(0px, -4px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
 /* this class and children is only present before the form is rendered */
 .Add {
     border-radius: 3px;
@@ -26,9 +45,9 @@
     background-color: rgba(0,0,0,0.08);
 }
 
-
 /*.addList and .addCard classes and children are visible after clicking Add*/
 .addList {
+    animation: fadein 800ms ease 0s 1 forwards;
     background-color: var(--light-gray);
     padding: 8px;
     border-radius: 3px;
@@ -110,6 +129,7 @@
 .addList button, .addCard button {
     margin: 0;
     width: auto;
+    animation: slideDown 250ms ease 0s 1 forwards;
 }
 
 .addList form, .addCard form {
