@@ -1,0 +1,23 @@
+.Delete {
+    justify-self: right;
+    width: 16px;
+    height: 16px;
+    opacity: 0.4;
+}
+
+.Delete button {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+}
+
+.Delete button img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.Delete:hover {
+    opacity: 1;
+}

@@ -13,19 +13,36 @@ export const Add = function(props) {
             </div>
         )
     } else {
-        return (
-            <div className="Form">
-                <form onSubmit={
-                    (event) => {
-                        event.preventDefault();
-                        const value = event.target[0].value
-                        props.add(value)
-                        setIsActive(false)
-                        }}>
-                    <input type="text"></input>
-                    <button type="submit">Add</button>
-                </form>
-            </div>
-        )
+        if (props.source === 'list') {
+            return (
+                <div className="addList">
+                    <form onSubmit={
+                        (event) => {
+                            event.preventDefault();
+                            const value = event.target[0].value
+                            props.add(value)
+                            setIsActive(false)
+                            }}>
+                        <input type="text" placeholder="Enter list title..." autoFocus='true'></input>
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            )
+        } else {
+            return (
+                <div className="addCard">
+                    <form onSubmit={
+                        (event) => {
+                            event.preventDefault();
+                            const value = event.target[0].value
+                            props.add(value)
+                            setIsActive(false)
+                            }}>
+                        <textarea placeholder="Enter a title for this card..." autoFocus='true'></textarea>
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            )
+        }
     }
 }

@@ -1,3 +1,63 @@
 .Add button {
     width: 100%;
+    margin: 0;
+}
+
+.addCard {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.addCard textarea {
+    width: 100%;
+    padding: 8px 8px 1.2em 8px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--dark-blue);
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    resize: none;
+    margin-bottom: 0.5em;
+}
+
+.addList input {
+    background-color: #ffffff;
+    border: 2px solid var(--brand-blue);
+    height: 40px;
+    margin: 0 0 0.6em 0;
+    display: block;
+    font-size: 14px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 100%;
+    padding: 0.6em;
+}
+
+.addList input:focus {
+    border: 2px solid var(--brand-blue);
+    outline: none;
+}
+
+.addList button, .addCard button {
+    margin: 0;
+    width: auto;
+}
+
+.addList form, .addCard form {
+    text-align: left;
+}
+
+.addList {
+    background-color: var(--light-gray);
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 0.5rem;
+    padding: 8px;
+    border-radius: 3px;
 }
