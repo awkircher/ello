@@ -22,7 +22,6 @@ const userConverter = {
         console.log('toFirestore called with ', user)
         return {
             email: user.email,
-            password: user.password,
             boardIds: user.boardIds
             };
     },
@@ -30,7 +29,7 @@ const userConverter = {
         const data = snapshot.data(options);
         const uid = snapshot.ref.id
         console.log('fromFirestore called with ', data)
-        return new UserClass(data.email, uid, data.password, data.boardIds);
+        return new UserClass(data.email, uid, data.boardIds);
     }
 }
 

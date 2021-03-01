@@ -43,14 +43,14 @@ export function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.username}/boards`} /> :
+            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.email}/boards`} /> :
             <LoginView checkUserCredentials={checkUserCredentials} />}
           </Route>
           <Route exact path="/login">
-            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.username}/boards`} /> :
+            {user.isLoggedIn ? <Redirect to={`/${user.currentUser.email}/boards`} /> :
             <LoginView checkUserCredentials={checkUserCredentials} />}
           </Route>
-          <Route exact path="/:username/boards">
+          <Route exact path="/:email/boards">
             {user.isLoggedIn ? <DashboardView /> :
             <Redirect to="/login" />}
           </Route>
