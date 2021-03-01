@@ -1,10 +1,12 @@
 .Form {
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border-radius: 3px;
     padding: 25px 40px;
     box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
-    width: 320px;
-    max-width: 585px;
+    width: 100%;
+    max-width: 320px;
+    min-width: 244px;
     margin: auto;
 }
 
@@ -16,8 +18,7 @@
     box-sizing: border-box;
     border-radius: 3px;
     height: 44px;
-    width: 320px;
-    max-width: 400px;
+    width: 100%;
     -webkit-transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
     transition: background-color .2s ease-in-out 0s,border-color .2s ease-in-out 0s;
     margin: 0 0 1.2em;
