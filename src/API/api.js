@@ -71,14 +71,15 @@ const cardConverter = {
     toFirestore: function(card) {
         console.log('toFirestore called with ', card)
         return {
-            title: card.title
+            title: card.title,
+            description: card.description
         }
     },
     fromFirestore: function(snapshot, options) {
         const data = snapshot.data(options);
         const uid = snapshot.ref.id
         console.log('fromFirestore called with ', data)
-        return new CardClass(data.title, uid)
+        return new CardClass(data.title, uid, data.description)
     }
 }
 
@@ -297,10 +298,11 @@ export const api = function() {
         //add this object to the collection Lists
         try {
             let docRef = await db.collection("cards").withConverter(cardConverter).add({
-                title: card.title})
+                title: card.title,
+                description: card.description})
             if (docRef) {
                 const uid = docRef.id;
-                const addedCard = new CardClass(card.title, uid);
+                const addedCard = new CardClass(card.title, uid, card.description);
                 return addedCard;
             }
         } catch(error) {
@@ -315,6 +317,23 @@ export const api = function() {
             console.log(response)
         } catch(error) {
             console.log(error)
+        }
+    }
+    const updateCard = async function(cardId, key, value) {
+        console.log('updateCard called with ', arguments)
+        switch (key) {
+            case "description":
+                console.log('description matched in switch')
+                try {
+                    const cardRef = db.collection("cards").doc(cardId);
+                    console.log(cardRef)
+                    let response = await cardRef.update({description: value});
+                    return "Document updated"
+                } catch(error) {
+                    console.log(error)
+                }
+                break;
+            default: console.log('invalid key passed')
         }
     }
     return { 
@@ -333,6 +352,7 @@ export const api = function() {
         deleteList,
         updateList,
         addCard,
-        deleteCard
+        deleteCard,
+        updateCard
     }
 }

@@ -21,3 +21,7 @@
 .Delete:hover {
     opacity: 1;
 }
+
+.modal .cardContents .Delete {
+    grid-column-start: 2;
+}

@@ -1,0 +1,45 @@
+.Description {
+    grid-row-start: 2;
+    grid-column: span 1;
+}
+
+.Description h2 {
+    align-self: flex-start;
+    margin: 0;
+}
+
+.Description textarea {
+    min-height: 120px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    resize: none;
+    font-family: inherit;
+}
+
+.Description textarea:focus {
+    /* min-height: 120px; */
+    border: 2px solid var(--brand-blue);
+    outline: none;
+    border-radius: 3px;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-column-gap: 0.5rem;
+}
+
+.controls button {
+    justify-self: left;
+    width: fit-content;
+}
+
+/* .controls button.cancel {
+    width: 24px;
+    height: 24px;
+    opacity: 0.4;
+    background-color: transparent;
+    border: none;
+    outline: none;
+} */

@@ -26,9 +26,10 @@ export const List = function(props) {
         }
     };
 
-    const refreshCards = async function(input) { 
+    const refreshWithNewCard = async function(input) { 
         const newCard = {
             title: input,
+            description: ""
         }
         let addedCard = await remote.addCard(newCard);
         if (addedCard) {
@@ -39,26 +40,42 @@ export const List = function(props) {
         }
     }
 
+    const refreshWithUpdatedCard = async function(cardId, key, value) {
+        let updatedCard = await remote.updateCard(cardId, key, value);
+        if (updatedCard) {
+            const cardsCopy = cards.slice();
+            const isCard = card => card.uid === cardId;
+            const indexOfMatch = cardsCopy.findIndex(isCard)
+            cardsCopy[indexOfMatch].description = value;
+            setCards(cardsCopy)
+        } else {
+            console.log('error updating card')
+        }
+    }
+
     const deleteCard = async function(cardId) {
         let response = await remote.deleteCard(cardId);
         if (response === undefined) {
             remote.removeFromList(props.listId, cardId)
-            const copyOfCards = cards.slice();
+            const cardsCopy = cards.slice();
             const isCard = (card) => card.uid === cardId;
-            const indexOfMatch = copyOfCards.findIndex(isCard);
-            copyOfCards.splice(indexOfMatch, 1)
-            setCards(copyOfCards)
+            const indexOfMatch = cardsCopy.findIndex(isCard);
+            cardsCopy.splice(indexOfMatch, 1)
+            setCards(cardsCopy)
         } else {
             console.log('there was an error deleting the card')
         }
     }
     
     const cardDisplay = cards.map((card) =>
-        <div key={card.uid}>
+        <div className="cardContainer" key={card.uid}>
             <Card 
                 deleteCard={deleteCard}
                 cardId={card.uid}
                 title={card.title}
+                description={card.description}
+                parentList={props.name}
+                update={refreshWithUpdatedCard}
             />
         </div>
     );
@@ -84,7 +101,7 @@ export const List = function(props) {
                 {cardDisplay}
                 <Add 
                     source="card"
-                    add={refreshCards}
+                    add={refreshWithNewCard}
                 />
             </div>
         )
