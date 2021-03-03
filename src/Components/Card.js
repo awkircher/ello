@@ -55,17 +55,26 @@ export const Card = function(props) {
                 <div className="modal" data-action="closeCard">
                     <div className="cardContentsContainer" data-action="closeCard">
                         <div className="cardContents">
-                            <h1>{props.title}</h1>
-                            <button className="close" onClick={() => setIsOpen(false)}>
-                                <img src={cancel} alt="cancel icon"></img>
-                            </button>
-                            <Delete
-                                uid={props.cardId}
-                                delete={props.deleteCard} />
-                            <Description
-                                uid={props.cardId} 
-                                description={props.description}
-                                update={props.update} />
+                            <div className="editableSections">
+                                <div className="titleDetails">
+                                    <h1>{props.title}</h1>
+                                    <p className="subhead">in list <span className="actionText">{props.parentList}</span></p>
+                                </div>
+                                <Description
+                                    uid={props.cardId} 
+                                    description={props.description}
+                                    update={props.update} />
+                            </div>
+                            <div className="sideMenu">
+                                <button className="close" onClick={() => setIsOpen(false)}>
+                                    <img src={cancel} alt="cancel icon"></img>
+                                </button>
+                                <h4 className="sectionHeader">Actions</h4>
+                                <Delete
+                                    appearance="rectButton"
+                                    uid={props.cardId}
+                                    delete={props.deleteCard} />
+                            </div>
                         </div>
                     </div>
                 </div>

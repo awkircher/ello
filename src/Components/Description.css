@@ -1,11 +1,39 @@
 .Description {
     grid-row-start: 2;
     grid-column: span 1;
+    margin-bottom: 16px;
 }
 
 .Description h2 {
     align-self: flex-start;
-    margin: 0;
+    margin: 8px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.Description .inactiveTextarea {
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 3px;
+    width: 100%;
+    text-align: left;
+    color: var(--dark-blue)
+}
+
+.Description .inactiveTextarea.hasDescription {
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.Description .inactiveTextarea.noDescription {
+    background-color: rgba(0,0,0,0.04);
+    padding-bottom: 32px;
+}
+
+.Description .inactiveTextarea.noDescription:hover {
+    background-color: rgba(0,0,0,0.08);
 }
 
 .Description textarea {
@@ -27,19 +55,21 @@
 .controls {
     display: grid;
     grid-template-columns: 64px 1fr;
-    grid-column-gap: 0.5rem;
+    grid-column-gap: 0.25rem;
+    align-items: center;
+    margin-top: 4px;
 }
 
 .controls button {
     justify-self: left;
     width: fit-content;
+    margin: 0;
 }
 
-/* .controls button.cancel {
-    width: 24px;
+.controls button.cancel {
+    width: auto;
     height: 24px;
-    opacity: 0.4;
     background-color: transparent;
     border: none;
     outline: none;
-} */
+}

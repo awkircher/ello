@@ -10,9 +10,10 @@ export const Navigation = function(props) {
     const user = useContext(UserContext)
     const match = useRouteMatch();
     const isDashboard = match.url.includes('/boards')
-
+    //The data attribute in navigation ensures that click-to-close will
+    //work for an opened card.
     return (
-        <nav className={isDashboard ? 'dash' : 'board'}>
+        <nav className={isDashboard ? 'dash' : 'board'} data-action="closeCard">
             <Link className="buttonContainer" to={`/${user.currentUser.username}/boards`}>
                 <button className="main">
                     <img src={home} alt="home icon"></img>

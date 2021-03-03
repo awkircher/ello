@@ -42,6 +42,37 @@ export const Description = function(props) {
         }
     }
 
+    //Using a button to reveal the textarea element circumvents an issue
+    //where changing the min-height of the focused textarea conflicted with 
+    //the event firing from the save and cancel buttons. This way, the button
+    //can be the shorter height, and the focused textarea can still be larger.
+    const showTextarea = function(isActive) {
+        if (isActive) {
+            return (
+                <textarea 
+                    data-action="ignore"
+                    placeholder="Add a more detailed description..." 
+                    value={text}
+                    autoFocus={true}
+                    onChange={(event) => setText(event.target.value)}>
+                </textarea>
+            )
+        } else {
+            let content;
+            let appearance;
+            if (text === '') {
+                content = "Add a more detailed description..."
+                appearance = 'noDescription'
+            } else {
+                content = text;
+                appearance = 'hasDescription'
+            }
+            return (
+                <button className={`inactiveTextarea ${appearance}`} onClick={() => setIsActive(true)}>{content}</button>
+            )
+        }
+    }
+
     useEffect(() => {
         if (isActive) {
             window.addEventListener('click', clickToCancel)
@@ -54,13 +85,7 @@ export const Description = function(props) {
     return (
         <div className="Description"> 
             <h2>Description</h2>
-            <textarea 
-                data-action="ignore"
-                placeholder="Add a more detailed description..." 
-                value={text}
-                onFocus={() => setIsActive(true)}
-                onChange={(event) => setText(event.target.value)}>
-            </textarea>
+            {showTextarea(isActive)}
             {showControls(isActive)}
         </div>
     )

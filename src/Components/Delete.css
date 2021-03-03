@@ -22,6 +22,30 @@
     opacity: 1;
 }
 
-.modal .cardContents .Delete {
-    grid-column-start: 2;
+.Delete.rectButton {
+    background: rgba(0,0,0,0.04);
+    padding: 8px;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 32px;
+    grid-column: span 1;
+    opacity: 1;
+}
+
+.Delete.rectButton:hover {
+    background: rgba(0,0,0,0.08);
+}
+
+.Delete.rectButton button {
+    color: var(--dark-blue);
+    display: flex;
+    align-items: center;
+}
+
+.Delete.rectButton img {
+    display: inline;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
