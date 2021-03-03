@@ -62,8 +62,15 @@ the actual card content */
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     align-content: flex-start;
-    grid-row-gap: 0.5rem;
     padding: 0 8px;
+}
+
+.sideMenu {
+    grid-row-gap: 0.5rem;
+}
+
+.editableSections {
+    grid-row-gap: 1.3rem;
 }
 
 .sideMenu .sectionHeader {
