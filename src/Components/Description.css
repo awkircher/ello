@@ -2,6 +2,14 @@
     grid-row-start: 2;
     grid-column: span 1;
     margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: flex-start;
+}
+
+.Description img {
+    margin-top: 6px;
+    opacity: 0.6;
 }
 
 .Description h2 {

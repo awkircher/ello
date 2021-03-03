@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Description.css'
 import cancel from "../icons/cancel-icon.svg"
+import description from "../icons/description-icon.svg"
 
 export const Description = function(props) {
     const [isActive, setIsActive] = useState(false)
@@ -83,10 +84,13 @@ export const Description = function(props) {
     })
 
     return (
-        <div className="Description"> 
-            <h2>Description</h2>
-            {showTextarea(isActive)}
-            {showControls(isActive)}
+        <div className="Description">
+            <img src={description} alt="description icon"></img>
+            <div className="contents">
+                <h2>Description</h2>
+                {showTextarea(isActive)}
+                {showControls(isActive)}
+            </div>
         </div>
     )
 }

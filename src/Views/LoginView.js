@@ -11,7 +11,7 @@ export const LoginView = function(props) {
     },[])
 
     return (
-        <div>
+        <div className="LoginView">
             <img src={logo} alt="Ello logo"></img>
             <Form
             checkUserCredentials={props.checkUserCredentials} />

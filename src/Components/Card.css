@@ -76,9 +76,15 @@ the actual card content */
     font-weight: 500;
 }
 
-.titleDetails {
+.titleSection {
     padding: 8px 0;
     box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+}
+
+.titleSection img {
+    opacity: 0.6;
 }
 
 .titleDetails h1 {

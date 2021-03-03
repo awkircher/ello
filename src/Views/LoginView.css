@@ -2,7 +2,7 @@ body {
     text-align: center;
 }
 
-img {
+.LoginView img {
     display: block;
     height: 43px;
     width: auto;

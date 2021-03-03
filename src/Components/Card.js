@@ -3,6 +3,7 @@ import { Delete } from "./Delete";
 import { Description } from "./Description"
 import "./Card.css"
 import cancel from '../icons/cancel-icon.svg'
+import title from '../icons/title-icon.svg'
 
 export const Card = function(props) {
     const [isOpen, setIsOpen] = useState(false)
@@ -56,9 +57,12 @@ export const Card = function(props) {
                     <div className="cardContentsContainer" data-action="closeCard">
                         <div className="cardContents">
                             <div className="editableSections">
-                                <div className="titleDetails">
-                                    <h1>{props.title}</h1>
-                                    <p className="subhead">in list <span className="actionText">{props.parentList}</span></p>
+                                <div className="titleSection">
+                                    <img src={title} alt="title icon"></img>
+                                    <div className="titleDetails">
+                                        <h1>{props.title}</h1>
+                                        <p className="subhead">in list <span className="actionText">{props.parentList}</span></p>
+                                    </div>
                                 </div>
                                 <Description
                                     uid={props.cardId} 
