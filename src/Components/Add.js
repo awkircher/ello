@@ -42,7 +42,7 @@ export const Add = function(props) {
                             props.add(value)
                             setIsActive(false)
                             }}>
-                        <textarea placeholder="Enter a title for this card..." autoFocus='true'></textarea>
+                        <textarea placeholder="Enter a title for this card..." autoFocus={true}></textarea>
                         <button type="submit">Add</button>
                         <button className="cancel" onClick={() => setIsActive(false)}>
                             <img src={cancel} alt="cancel icon"></img>
