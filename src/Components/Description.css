@@ -1,0 +1,83 @@
+.Description {
+    grid-row-start: 2;
+    grid-column: span 1;
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: flex-start;
+}
+
+.Description img {
+    margin-top: 6px;
+    opacity: 0.6;
+}
+
+.Description h2 {
+    align-self: flex-start;
+    margin: 8px 0px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.Description .inactiveTextarea {
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 3px;
+    width: 100%;
+    text-align: left;
+    color: var(--dark-blue)
+}
+
+.Description .inactiveTextarea.hasDescription {
+    background-color: transparent;
+    padding-left: 0;
+}
+
+.Description .inactiveTextarea.noDescription {
+    background-color: rgba(0,0,0,0.04);
+    padding-bottom: 32px;
+}
+
+.Description .inactiveTextarea.noDescription:hover {
+    background-color: rgba(0,0,0,0.08);
+}
+
+.Description textarea {
+    min-height: 120px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    resize: none;
+    font-family: inherit;
+}
+
+.Description textarea:focus {
+    /* min-height: 120px; */
+    border: 2px solid var(--brand-blue);
+    outline: none;
+    border-radius: 3px;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    grid-column-gap: 0.25rem;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.controls button {
+    justify-self: left;
+    width: fit-content;
+    margin: 0;
+}
+
+.controls button.cancel {
+    width: auto;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}

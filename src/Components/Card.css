@@ -1,0 +1,142 @@
+.Card {
+    background-color: #fff;
+}
+
+.Card, .cardContents {
+    padding: 8px;
+    font-size: 14px;
+    color: var(--dark-blue);
+    text-align: left;
+    border-radius: 3px;
+}
+
+.Card.closed, .Card.open {
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 24px;
+}
+
+/* modal class styles the fullscreen div */
+.Card.closed .modal {
+    display: none;
+}
+
+.Card.open .modal {
+    background-color: rgba(0,0,0,0.6);
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 48px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* cardContentsContainer class positions and creates the right height around
+the actual card content */
+.Card.open .modal .cardContentsContainer {
+    box-sizing: content-box;
+    width: 85%;
+    max-width: 585px;
+    min-width: 260px;
+    justify-self: center;
+    align-self: flex-start;
+}
+
+/* cardContents styles the visual card */
+.Card.open .modal .cardContentsContainer .cardContents {
+    background-color: #f4f5f7;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 16%);
+    width: 100%;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 75% 1fr;
+}
+
+.editableSections, .sideMenu {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-content: flex-start;
+    padding: 0 8px;
+}
+
+.sideMenu {
+    grid-row-gap: 0.5rem;
+}
+
+.editableSections {
+    grid-row-gap: 1.3rem;
+}
+
+.sideMenu .sectionHeader {
+    text-transform: uppercase;
+    color: var(--dark-gray);
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    letter-spacing: 0.48px;
+    font-weight: 500;
+}
+
+.titleSection {
+    padding: 8px 0;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+}
+
+.titleSection img {
+    opacity: 0.6;
+}
+
+.titleDetails h1 {
+    grid-column: span 1;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+.titleDetails .subhead {
+    font-size: 14px;
+    grid-column-start: 1;
+    margin: 0;
+    color: var(--dark-gray)
+}
+
+.subhead .actionText {
+    text-decoration: underline;
+}
+
+.cardContents button.close {
+    height: 32px;
+    padding: 8px;
+    margin: 0 0 32px 0;
+    justify-self: right;
+    background-color: rgba(0,0,0,0);
+    outline: none;
+    border: none;
+    border-radius: 100px;
+}
+
+.cardContents button.close:hover {
+    background-color: rgba(0,0,0,0.08);
+}
+
+.cardContents button.close:active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.cardContents button.close img {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    opacity: 0.8;
+}

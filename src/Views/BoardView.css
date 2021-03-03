@@ -1,0 +1,27 @@
+.boardDetailBar, .listsContainer {
+    margin: 0 4px;
+}
+
+.listsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-gap: 0.5rem;
+    align-items: flex-start;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 1fr);
+}
+
+.boardContainer {
+    overflow-x: scroll;
+    height: 93vh;
+}
+
+.boardDetailBar {
+    padding: 0px 8px;
+}
+
+.boardDetailBar h1 {
+    font-size: 18px;
+    color: var(--dark-blue);
+    text-align: left;
+}

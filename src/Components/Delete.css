@@ -1,0 +1,51 @@
+.Delete {
+    justify-self: right;
+    width: 16px;
+    height: 16px;
+    opacity: 0.4;
+}
+
+.Delete button {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+}
+
+.Delete button img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.Delete:hover {
+    opacity: 1;
+}
+
+.Delete.rectButton {
+    background: rgba(0,0,0,0.04);
+    padding: 8px;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 32px;
+    grid-column: span 1;
+    opacity: 1;
+}
+
+.Delete.rectButton:hover {
+    background: rgba(0,0,0,0.08);
+}
+
+.Delete.rectButton button {
+    color: var(--dark-blue);
+    display: flex;
+    align-items: center;
+}
+
+.Delete.rectButton img {
+    display: inline;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}

@@ -1,0 +1,141 @@
+/* animation */
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translate(0px, -4px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+
+/* this class and children is only present before the form is rendered */
+.Add {
+    border-radius: 3px;
+}
+
+.Add button {
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    padding: 0 8px;
+    text-align: left;
+    outline: none;
+    border: none;
+    color: var(--dark-blue);
+    background-color: transparent;
+}
+
+.Add.list {
+    background-color: rgba(0,0,0,0.08);
+}
+.Add.list:hover {
+    background-color: rgba(0,0,0,0.16);
+}
+
+.Add.card:hover {
+    background-color: rgba(0,0,0,0.08);
+}
+
+/*.addList and .addCard classes and children are visible after clicking Add*/
+.addList {
+    animation: fadein 600ms ease 0s 1 forwards;
+    background-color: var(--light-gray);
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.addCard {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.addCard form, .addList form {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: auto 1fr;
+    grid-row-gap: 0.5rem;
+    grid-column-gap: 0.5rem;
+}
+
+.addCard .cancel, .addList .cancel {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    align-self: center;
+    opacity: 0.4;
+}
+
+.addCard .cancel:hover, .addList .cancel:hover {
+    opacity: 1;
+}
+
+.cancel img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+
+.addCard textarea {
+    grid-column: span 2;
+    width: 100%;
+    padding: 8px 8px 1.2em 8px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: white;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--dark-blue);
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+    resize: none;
+    outline: none;
+}
+
+.addList input {
+    grid-column: span 2;
+    background-color: #ffffff;
+    border: 2px solid var(--brand-blue);
+    height: 40px;
+    margin: 0;
+    display: block;
+    font-size: 14px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 100%;
+    padding: 0.6em;
+}
+
+.addList input:focus {
+    border: 2px solid var(--brand-blue);
+    outline: none;
+}
+
+.addList button, .addCard button {
+    margin: 0;
+    width: auto;
+}
+
+.addList button {
+    animation: slideDown 250ms ease 0s 1 forwards;
+}
+
+.addList form, .addCard form {
+    text-align: left;
+}
