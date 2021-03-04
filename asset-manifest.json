@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/ello/static/css/main.3c120bb5.chunk.css",
+    "main.js": "/ello/static/js/main.37eabaa9.chunk.js",
+    "main.js.map": "/ello/static/js/main.37eabaa9.chunk.js.map",
+    "runtime-main.js": "/ello/static/js/runtime-main.4952bbe9.js",
+    "runtime-main.js.map": "/ello/static/js/runtime-main.4952bbe9.js.map",
+    "static/js/2.bd57b04b.chunk.js": "/ello/static/js/2.bd57b04b.chunk.js",
+    "static/js/2.bd57b04b.chunk.js.map": "/ello/static/js/2.bd57b04b.chunk.js.map",
+    "index.html": "/ello/index.html",
+    "static/css/main.3c120bb5.chunk.css.map": "/ello/static/css/main.3c120bb5.chunk.css.map",
+    "static/js/2.bd57b04b.chunk.js.LICENSE.txt": "/ello/static/js/2.bd57b04b.chunk.js.LICENSE.txt",
+    "static/media/cancel-icon.f1e32e6f.svg": "/ello/static/media/cancel-icon.f1e32e6f.svg",
+    "static/media/delete-icon.28ac9259.svg": "/ello/static/media/delete-icon.28ac9259.svg",
+    "static/media/description-icon.4e00cd49.svg": "/ello/static/media/description-icon.4e00cd49.svg",
+    "static/media/home-icon.da235aea.svg": "/ello/static/media/home-icon.da235aea.svg",
+    "static/media/logo-white.49c8f8b0.svg": "/ello/static/media/logo-white.49c8f8b0.svg",
+    "static/media/logo.e6046145.svg": "/ello/static/media/logo.e6046145.svg",
+    "static/media/member-icon-dark.28303ddf.svg": "/ello/static/media/member-icon-dark.28303ddf.svg",
+    "static/media/recent-icon-dark.d4a8def6.svg": "/ello/static/media/recent-icon-dark.d4a8def6.svg",
+    "static/media/title-icon.e2feb6ab.svg": "/ello/static/media/title-icon.e2feb6ab.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4952bbe9.js",
+    "static/js/2.bd57b04b.chunk.js",
+    "static/css/main.3c120bb5.chunk.css",
+    "static/js/main.37eabaa9.chunk.js"
+  ]
+}
