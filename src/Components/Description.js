@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TextareaAutosize from 'react-autosize-textarea';
 import './Description.css'
 import cancel from "../icons/cancel-icon.svg"
 import description from "../icons/description-icon.svg"
@@ -50,13 +51,13 @@ export const Description = function(props) {
     const showTextarea = function(isActive) {
         if (isActive) {
             return (
-                <textarea 
+                <TextareaAutosize 
                     data-action="ignore"
                     placeholder="Add a more detailed description..." 
                     value={text}
                     autoFocus={true}
                     onChange={(event) => setText(event.target.value)}>
-                </textarea>
+                </TextareaAutosize>
             )
         } else {
             let content;

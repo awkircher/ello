@@ -321,13 +321,21 @@ export const api = function() {
     }
     const updateCard = async function(cardId, key, value) {
         console.log('updateCard called with ', arguments)
+        const cardRef = db.collection("cards").doc(cardId);
         switch (key) {
             case "description":
                 console.log('description matched in switch')
                 try {
-                    const cardRef = db.collection("cards").doc(cardId);
-                    console.log(cardRef)
-                    let response = await cardRef.update({description: value});
+                    await cardRef.update({description: value});
+                    return "Document updated"
+                } catch(error) {
+                    console.log(error)
+                }
+                break;
+            case "title":
+                console.log("title matched in switch")
+                try {
+                    await cardRef.update({title: value});
                     return "Document updated"
                 } catch(error) {
                     console.log(error)

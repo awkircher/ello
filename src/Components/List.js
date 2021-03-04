@@ -45,8 +45,17 @@ export const List = function(props) {
         if (updatedCard) {
             const cardsCopy = cards.slice();
             const isCard = card => card.uid === cardId;
-            const indexOfMatch = cardsCopy.findIndex(isCard)
-            cardsCopy[indexOfMatch].description = value;
+            const indexOfMatch = cardsCopy.findIndex(isCard);
+            switch (key) {
+                case 'title':
+                    cardsCopy[indexOfMatch].title = value;
+                    break;
+                case 'description':
+                    cardsCopy[indexOfMatch].description = value;
+                    break;
+                default: 
+                    console.log('no such key');
+            }
             setCards(cardsCopy)
         } else {
             console.log('error updating card')

@@ -1,0 +1,45 @@
+.titleSection {
+    padding: 8px 0;
+    box-sizing: content-box;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-column: span 9;
+}
+
+.titleSection img {
+    opacity: 0.6;
+}
+
+.titleDetails .subhead {
+    font-size: 14px;
+    grid-column-start: 1;
+    margin: 0;
+    color: var(--dark-gray)
+}
+
+.subhead .actionText {
+    text-decoration: underline;
+}
+
+.titleDetails textarea {
+    width: 100%;
+    max-height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    resize: none;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: inherit;
+    line-height: 24px;
+    margin: -8px 0 0 -8px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.titleDetails textarea:focus {
+    border: 2px solid var(--brand-blue);
+    border-radius: 3px;
+    margin: 0;
+}

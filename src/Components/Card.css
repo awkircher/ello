@@ -54,7 +54,7 @@ the actual card content */
     width: 100%;
     margin-bottom: 48px;
     display: grid;
-    grid-template-columns: 75% 1fr;
+    grid-template-columns: repeat(10, 10%);
 }
 
 .editableSections, .sideMenu {
@@ -67,10 +67,13 @@ the actual card content */
 
 .sideMenu {
     grid-row-gap: 0.5rem;
+    grid-column: span 3;
+    margin-top: 32px;
 }
 
 .editableSections {
     grid-row-gap: 1.3rem;
+    grid-column:  span 7;
 }
 
 .sideMenu .sectionHeader {
@@ -83,41 +86,10 @@ the actual card content */
     font-weight: 500;
 }
 
-.titleSection {
-    padding: 8px 0;
-    box-sizing: content-box;
-    display: grid;
-    grid-template-columns: 40px 1fr;
-}
-
-.titleSection img {
-    opacity: 0.6;
-}
-
-.titleDetails h1 {
-    grid-column: span 1;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 24px;
-    overflow-wrap: break-word;
-    margin: 0;
-}
-
-.titleDetails .subhead {
-    font-size: 14px;
-    grid-column-start: 1;
-    margin: 0;
-    color: var(--dark-gray)
-}
-
-.subhead .actionText {
-    text-decoration: underline;
-}
-
 .cardContents button.close {
     height: 32px;
     padding: 8px;
-    margin: 0 0 32px 0;
+    margin: 0;
     justify-self: right;
     background-color: rgba(0,0,0,0);
     outline: none;
