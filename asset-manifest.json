@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/ello/static/css/main.7196dcbc.chunk.css",
-    "main.js": "/ello/static/js/main.66aa27b6.chunk.js",
-    "main.js.map": "/ello/static/js/main.66aa27b6.chunk.js.map",
+    "main.css": "/ello/static/css/main.b7440bb3.chunk.css",
+    "main.js": "/ello/static/js/main.9d6da527.chunk.js",
+    "main.js.map": "/ello/static/js/main.9d6da527.chunk.js.map",
     "runtime-main.js": "/ello/static/js/runtime-main.4952bbe9.js",
     "runtime-main.js.map": "/ello/static/js/runtime-main.4952bbe9.js.map",
-    "static/js/2.b2d91af8.chunk.js": "/ello/static/js/2.b2d91af8.chunk.js",
-    "static/js/2.b2d91af8.chunk.js.map": "/ello/static/js/2.b2d91af8.chunk.js.map",
+    "static/js/2.5223e43f.chunk.js": "/ello/static/js/2.5223e43f.chunk.js",
+    "static/js/2.5223e43f.chunk.js.map": "/ello/static/js/2.5223e43f.chunk.js.map",
     "index.html": "/ello/index.html",
-    "static/css/main.7196dcbc.chunk.css.map": "/ello/static/css/main.7196dcbc.chunk.css.map",
-    "static/js/2.b2d91af8.chunk.js.LICENSE.txt": "/ello/static/js/2.b2d91af8.chunk.js.LICENSE.txt",
+    "static/css/main.b7440bb3.chunk.css.map": "/ello/static/css/main.b7440bb3.chunk.css.map",
+    "static/js/2.5223e43f.chunk.js.LICENSE.txt": "/ello/static/js/2.5223e43f.chunk.js.LICENSE.txt",
     "static/media/cancel-icon.f1e32e6f.svg": "/ello/static/media/cancel-icon.f1e32e6f.svg",
     "static/media/delete-icon.28ac9259.svg": "/ello/static/media/delete-icon.28ac9259.svg",
     "static/media/description-icon.4e00cd49.svg": "/ello/static/media/description-icon.4e00cd49.svg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.4952bbe9.js",
-    "static/js/2.b2d91af8.chunk.js",
-    "static/css/main.7196dcbc.chunk.css",
-    "static/js/main.66aa27b6.chunk.js"
+    "static/js/2.5223e43f.chunk.js",
+    "static/css/main.b7440bb3.chunk.css",
+    "static/js/main.9d6da527.chunk.js"
   ]
 }
