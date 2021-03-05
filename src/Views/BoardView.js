@@ -5,10 +5,12 @@ import { List } from "../Components/List"
 import { Navigation } from "../Components/Navigation"
 import { Add } from "../Components/Add"
 import "./BoardView.css"
+import "./BackgroundSettings.css"
 
 export const BoardView = function(props) {
     const [isLoading, setIsLoading] = useState(true)
     const [lists, setLists] = useState([])
+    const [settings, setSettings] = useState('default')
     const remote = api()
     const match = useRouteMatch();
     
@@ -16,9 +18,15 @@ export const BoardView = function(props) {
         if (!boardId) {
             return;
         }
-        let response = await remote.getListsByBoardId(boardId);
-        if (response) {
-            setLists(response)
+        let boardResponse = await remote.getBoard(boardId);
+        if (boardResponse) {
+            setSettings(boardResponse.background)
+        } else {
+            console.log('board not found')
+        }
+        let listsResponse = await remote.getListsByBoardId(boardId);
+        if (listsResponse) {
+            setLists(listsResponse)
             setIsLoading(false)
         } else {
             console.log('lists not found')
@@ -71,13 +79,17 @@ export const BoardView = function(props) {
 
     if (isLoading) {
         return (
-            <div>Please hold!</div>
+            <div>
+                <Navigation 
+                    background={settings} />
+            </div>
         )
     } else {
         return (
             <div>
-                <Navigation />
-                <div className="boardContainer">
+                <Navigation 
+                    background={settings} />
+                <div className={`boardContainer ${settings}`}>
                     <div className="boardDetailBar">
                         <h1>{match.params.boardName}</h1>
                     </div>

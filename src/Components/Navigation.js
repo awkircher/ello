@@ -2,9 +2,10 @@ import { Link, useRouteMatch } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../Models/UserContext'
 import { UserAccount } from './UserAccount'
-import './Navigation.css'
 import logo from '../icons/logo-white.svg'
 import home from '../icons/home-icon.svg'
+import './Navigation.css'
+import '../Views/BackgroundSettings.css'
 
 export const Navigation = function(props) {
     const user = useContext(UserContext)
@@ -13,7 +14,7 @@ export const Navigation = function(props) {
     //The data attribute in navigation ensures that click-to-close will
     //work for an opened card.
     return (
-        <nav className={isDashboard ? 'dash' : 'board'} data-action="closeCard">
+        <nav className={`${isDashboard ? 'dash' : 'board'} ${props.background}`} data-action="closeCard">
             <Link className="buttonContainer" to={`/${user.currentUser.username}/boards`}>
                 <button className="main">
                     <img src={home} alt="home icon"></img>

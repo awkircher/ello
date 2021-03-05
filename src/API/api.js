@@ -40,14 +40,15 @@ const boardConverter = {
             name: board.name,
             ownerId: board.ownerId,
             listIds: board.listIds,
-            memberIds: board.memberIds
+            memberIds: board.memberIds,
+            background: board.background
         };
     },
     fromFirestore: function(snapshot, options) {
         const data = snapshot.data(options);
         const uid = snapshot.ref.id
         console.log('fromFirestore called with ', data)
-        return new BoardClass(data.name, uid, data.ownerId, data.listIds, data.memberIds)
+        return new BoardClass(data.name, uid, data.ownerId, data.listIds, data.memberIds, data.background)
     }
 }
 

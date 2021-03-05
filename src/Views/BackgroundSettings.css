@@ -1,0 +1,32 @@
+.purple {
+    background: linear-gradient(var(--purple), var(--purple));
+}
+
+nav.board.purple {
+    background: 
+        linear-gradient(var(--purple), var(--purple)),
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    background-blend-mode: multiply;
+}
+
+.green {
+    background: linear-gradient(var(--green), var(--green));
+}
+
+nav.board.green {
+    background: 
+        linear-gradient(var(--green), var(--green)),
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    background-blend-mode: multiply;
+}
+
+.orange {
+    background: linear-gradient(var(--orange), var(--orange));
+}
+
+nav.board.orange {
+    background: 
+        linear-gradient(var(--orange), var(--orange)),
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    background-blend-mode: multiply;
+}

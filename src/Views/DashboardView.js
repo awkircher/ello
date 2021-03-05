@@ -3,9 +3,10 @@ import { Navigation } from "../Components/Navigation";
 import { api } from "../API/api"
 import { useContext, useState, useEffect } from "react"
 import { Link } from "react-router-dom";
-import "./DashboardView.css"
 import recent from "../icons/recent-icon-dark.svg"
 import member from "../icons/member-icon-dark.svg"
+import "./DashboardView.css"
+import "./BackgroundSettings.css"
 
 export const DashboardView = function() {
     const [isLoading, setIsLoading] = useState(true)
@@ -30,12 +31,12 @@ export const DashboardView = function() {
     };
     
     const ownedBoardsLinks = ownedBoards.map((board) =>
-        <Link className="boardTile" key={`owned${board.uid}`} to={`/${board.uid}/${board.name}`}>
+        <Link className={`boardTile ${board.background}`} key={`owned${board.uid}`} to={`/${board.uid}/${board.name}`}>
             <div>{board.name}</div>
         </Link>
     );
     const sharedBoardsLinks = sharedBoards.map((board) => 
-        <Link className="boardTile" key={`shared${board.uid}`} to={`/${board.uid}/${board.name}`}>
+        <Link className={`boardTile ${board.background}`} key={`shared${board.uid}`} to={`/${board.uid}/${board.name}`}>
             <div>{board.name}</div>
         </Link>
     );
@@ -48,7 +49,9 @@ export const DashboardView = function() {
     
     if (isLoading) {
         return (
-            <div>please hold!</div>
+            <div>
+                <Navigation />
+            </div>
         )
     } else {
         return (
