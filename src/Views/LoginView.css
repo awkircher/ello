@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: #FAFBFC;
+    background-color: var(--near-white);
 }
 
 .LoginView img {

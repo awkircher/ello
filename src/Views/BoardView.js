@@ -4,6 +4,7 @@ import { api } from "../API/api"
 import { List } from "../Components/List"
 import { Navigation } from "../Components/Navigation"
 import { Add } from "../Components/Add"
+import close from "../icons/cancel-icon.svg"
 import "./BoardView.css"
 import "./BackgroundSettings.css"
 
@@ -11,6 +12,7 @@ export const BoardView = function(props) {
     const [isLoading, setIsLoading] = useState(true)
     const [lists, setLists] = useState([])
     const [settings, setSettings] = useState('default')
+    const [menuIsVisible, setMenuIsVisible] = useState(false)
     const remote = api()
     const match = useRouteMatch();
     
@@ -40,10 +42,19 @@ export const BoardView = function(props) {
         }
         let addedList = await remote.addList(newList);
         if (addedList) {
-            remote.updateBoard(match.params.boardId, addedList.uid)
+            remote.updateBoard(match.params.boardId, 'listIds', addedList.uid)
             setLists([...lists, addedList]) 
         } else {
             console.log('error adding new list')
+        }
+    }
+
+    const refreshSettings = async function(selection) {
+        let response = await remote.updateBoard(match.params.boardId, 'background', selection);
+        if (response) {
+            setSettings(selection);
+        } else {
+            console.log('error updating settings')
         }
     }
 
@@ -71,6 +82,30 @@ export const BoardView = function(props) {
         </div>
     );
     
+    const menu = function(isVisible) {
+        if (isVisible) {
+            return (
+                <div className="settingsMenu">
+                    <div className="sectionHeader">
+                        <h4>Change Background</h4>
+                        <button className="close" onClick={() => setMenuIsVisible(false)}>
+                            <img src={close} alt="close icon"></img>
+                        </button>
+                    </div>
+                    <div className="options">
+                        <button className="menuOption orange" onClick={() => refreshSettings('orange')}></button>
+                        <button className="menuOption purple" onClick={() => refreshSettings('purple')}></button>
+                        <button className="menuOption green" onClick={() => refreshSettings('green')}></button>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <button className="settingsMenuControl" onClick={() => setMenuIsVisible(true)}>Show Menu</button>
+            );
+        }
+    }
+
     useEffect(() => {
         initLists(match.params.boardId);
         let title = `${match.params.boardName} | Ello`;
@@ -92,6 +127,7 @@ export const BoardView = function(props) {
                 <div className={`boardContainer ${settings}`}>
                     <div className="boardDetailBar">
                         <h1>{match.params.boardName}</h1>
+                        {menu(menuIsVisible)}
                     </div>
                     <div className="listsContainer">
                         {listDisplay}

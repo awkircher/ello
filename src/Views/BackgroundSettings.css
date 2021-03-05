@@ -2,6 +2,13 @@
     background: linear-gradient(var(--purple), var(--purple));
 }
 
+.boardTile.purple:hover {
+    background: 
+        linear-gradient(var(--purple), var(--purple)),
+        linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+    background-blend-mode: multiply;
+}
+
 nav.board.purple {
     background: 
         linear-gradient(var(--purple), var(--purple)),
@@ -13,6 +20,13 @@ nav.board.purple {
     background: linear-gradient(var(--green), var(--green));
 }
 
+.boardTile.green:hover {
+    background: 
+        linear-gradient(var(--green), var(--green)),
+        linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+    background-blend-mode: multiply;
+}
+
 nav.board.green {
     background: 
         linear-gradient(var(--green), var(--green)),
@@ -22,6 +36,13 @@ nav.board.green {
 
 .orange {
     background: linear-gradient(var(--orange), var(--orange));
+}
+
+.boardTile.orange:hover {
+    background: 
+        linear-gradient(var(--orange), var(--orange)),
+        linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+    background-blend-mode: multiply;
 }
 
 nav.board.orange {

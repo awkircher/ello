@@ -226,15 +226,30 @@ export const api = function() {
             console.log(error)
         }
     }
-    const updateBoard = async function(boardId, listId) {
-        try {
-            const boardRef = db.collection("boards").doc(boardId);
-            let response = await boardRef.update({
-                    listIds: firebase.firestore.FieldValue.arrayUnion(listId)
-                });
-            return response;
-        } catch(error) {
-            console.log(error)
+    const updateBoard = async function(boardId, key, value) {
+        const boardRef = db.collection("boards").doc(boardId);
+        switch (key) {
+            case "listIds":
+                console.log('listIds matched in switch')
+                try {
+                    let response = await boardRef.update({
+                            listIds: firebase.firestore.FieldValue.arrayUnion(value)
+                        });
+                    return response;
+                } catch(error) {
+                    console.log(error)
+                }
+                break;
+            case "background":
+                console.log("background matched in switch")
+                try {
+                    await boardRef.update({background: value});
+                    return "Document updated"
+                } catch(error) {
+                    console.log(error)
+                }
+                break;
+            default: console.log('invalid key passed')
         }
     }
     const removeFromBoard = async function(boardId, listId) {
