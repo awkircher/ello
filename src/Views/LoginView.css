@@ -12,3 +12,15 @@ body {
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
+.LoginView .errorMessage {
+    color: rgb(204 27 27);
+    padding: 16px;
+    background: #ffe5e4;
+    border: 2px solid rgb(204 27 27);
+    min-width: 244px;
+    max-width: 320px;
+    margin: 0px auto 16px auto;
+    box-sizing: border-box;
+    border-radius: 3px;
+}

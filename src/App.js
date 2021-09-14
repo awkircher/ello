@@ -17,6 +17,7 @@ export function App() {
   const remote = api();
   const userDefaults = useContext(UserContext)
   const [user, setUser] = useState(userDefaults);
+  const [error, setError] = useState(false)
 
   const checkUserCredentials = async function(email, password) {
     let response = await remote.authenticateAndGetUser(email, password);
@@ -28,12 +29,13 @@ export function App() {
         setLogOut: (isLoggedIn) => {
           if (isLoggedIn) {
             setUser(userDefaults)
+            setError(false)
           };
         }
       });
       console.log('the state variable user is ', user)
     } else {
-      console.log(`try again`)
+      setError(true)
     }
   }
 
@@ -44,11 +46,11 @@ export function App() {
         <Switch>
           <Route exact path="/">
             {user.isLoggedIn ? <Redirect to={`/${user.currentUser.email}/boards`} /> :
-            <LoginView checkUserCredentials={checkUserCredentials} />}
+            <LoginView checkUserCredentials={checkUserCredentials} error={error} />}
           </Route>
           <Route exact path="/login">
             {user.isLoggedIn ? <Redirect to={`/${user.currentUser.email}/boards`} /> :
-            <LoginView checkUserCredentials={checkUserCredentials} />}
+            <LoginView checkUserCredentials={checkUserCredentials} error={error} />}
           </Route>
           <Route exact path="/:email/boards">
             {user.isLoggedIn ? <DashboardView /> :

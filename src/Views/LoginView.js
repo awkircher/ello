@@ -5,6 +5,14 @@ import './LoginView.css'
 
 export const LoginView = function(props) {
 
+    const ErrorMessage = () => {
+        if (props.error) {
+            return <div className="errorMessage">Login failed. Please try again.</div>
+        } else {
+            return null;
+        }
+    }
+
     useEffect(() => {
         let title = `Login | Ello`
         document.title = title;
@@ -13,6 +21,7 @@ export const LoginView = function(props) {
     return (
         <div className="LoginView">
             <img src={logo} alt="Ello logo"></img>
+            <ErrorMessage />
             <Form
             checkUserCredentials={props.checkUserCredentials} />
         </div>
